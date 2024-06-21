@@ -27,4 +27,32 @@ v1.1 (June 2024): To incorporate more diverse and challenging data, this version
 Command Example:
 ```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "GPT-3.5" --quantization "4bit" --script_name "friends" --ret_method "bm25" --history_type "session-entire" --sleep_time 6 --openai_api_key "<<YOUR_OPENAI_API_KEY>>"  --trial_version 0 --sh_number 0 --num_cores 10```
 
+#### Arguments
+a) model_name: name of the model (one of "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "GPT-3.5", "GPT-4", "claude-3", "claude-2.1", and "gemini"). Default: "GPT-3.5"
+
+b) quantization: 
+
+c) script_name:
+
+d) sleep_time: 
+
+e) history_type: 
+
+f) num_ret_history: 
+
+g) ret_method: 
+
+h) name_shuffle: 
+
+i) trial_version:
+
+j) sh_number:
+
+k) num_cores: 
+
+l) openai_api_key: 
+
+m) gemini_api_key:
+
+n) antrhopic_api_key: 
 
