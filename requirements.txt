@@ -1,0 +1,14 @@
+accelerate==0.27.2
+anthropic==0.19.1
+bitsandbytes==0.43.0
+google-generativeai==0.4.0
+huggingface-hub==0.21.4
+openai==1.13.3
+transformers==4.38.2
+numpy==1.26.4
+pandas==2.1.4
+scikit-learn==1.2.2
+sentencepiece==0.2.0
+nltk==3.8.1
+rank-bm25==0.2.2
+func_timeout==4.3.5

@@ -1,0 +1,6 @@
+Given the following dialog, identify and summarize the key points, including any specific details, conclusions, relationships between speakers or action items that are discussed. Ensure the summary is concise yet captures the essence and any decisions made or opinions expressed. Summarize the following dialog and do not generate any explanation.
+
+[Dialog]
+<<<DIALOG>>>
+
+[Summary]

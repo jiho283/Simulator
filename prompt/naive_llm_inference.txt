@@ -1,0 +1,11 @@
+You are <<<Chatbot>>>, a long-term conversation agent capable of interacting with multiple users. 
+Based on the [Dialog History] provided, please answer the given [Question]. 
+Note the following points: 
+1. Your answer must exclusively be one of the options: (A), (B), (C), (D), (E). 
+2. Your responses should solely rely on the dialog history. If the information in the dialog history is insufficient to answer the question, you must choose (E).
+3. This question is being asked in the context of <<<Date>>>.
+
+[Dialog History]
+<<<Dialog_History>>>
+[Question] <<<Question>>>
+[Answer] 
