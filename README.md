@@ -42,3 +42,7 @@ Command Example:
 - `openai_api_key`: Required if using "GPT-3.5", "GPT-4" or `ret_method="openai-emb"`.
 - `gemini_api_key`: Required if using "gemini" in the model name.
 - `anthropic_api_key`: Required if using "claude-3" or "claude-2.1" in the model name.
+
+
+## Python Package
+We plan to make this simulator into a Python package.
