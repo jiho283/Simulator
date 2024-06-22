@@ -25,34 +25,20 @@ v1.1 (June 2024): To incorporate more diverse and challenging data, this version
 
 ## Simulation
 Command Example:
-```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "GPT-3.5" --quantization "4bit" --script_name "friends" --ret_method "bm25" --history_type "session-entire" --sleep_time 6 --openai_api_key "<<YOUR_OPENAI_API_KEY>>"  --trial_version 0 --sh_number 0 --num_cores 10```
+```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "GPT-3.5" --quantization "4bit" --script_name "friends" --sleep_time 6 --history_type "session-entire" --ret_method "bm25"  --trial_version 0 --sh_number 0 --num_cores 10 --openai_api_key "<<YOUR_OPENAI_API_KEY>>"```
 
 #### Arguments
-a) model_name: name of the model (should be one of "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "GPT-3.5", "GPT-4", "claude-3", "claude-2.1", and "gemini"). Default: "GPT-3.5"
-
-b) quantization: decide whether to quantize the model (should be one of "no", "16bit", "8bit", and "4bit"). Default: "no"
-
-c) script_name: name of the script (should be one of "friends", "bigbang", and "theoffice"). Default: "friends"
-
-d) sleep_time: value of the time limit. Default: "5"
-
-e) history_type: the method of saving history (should be one of "utts", "session-entire", and "session-summary"). Default: "session-entire"
-
-f) num_ret_history: 
-
-g) ret_method: 
-
-h) name_shuffle: 
-
-i) trial_version:
-
-j) sh_number:
-
-k) num_cores: 
-
-l) openai_api_key: 
-
-m) gemini_api_key:
-
-n) antrhopic_api_key: 
-
+- `model_name`: Specifies the model to use, default is "GPT-3.5". Options include "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "GPT-3.5", "GPT-4", "claude-3", "claude-2.1", and "gemini".
+- `quantization`: Model quantization level, default is "no". Options include "no", "16bit", "8bit", and "4bit".
+- `script_name`: TV show script for the simulation, default is "friends". Options include "friends", "bigbang", and "theoffice".
+- `sleep_time`: Response time limit, default: 5
+- `history_type`: Method for saving history, default is "session-entire". Options include "utts", "session-entire", and "session-summary".
+- `num_ret_history`: Number of retrieved histories to use. Modify lines 182-240 in `simulator.py` to change this number.
+- `ret_method`: Retrieval method, default is "bm25". Options include "openai-emb", "bm25", "no_ret", and "oracle".
+- `name_shuffle`: Type of adversarial test, default is "original". Options include "original", "shuffle", and "new_name".
+- `trial_version`: Experiment version number, default: 0
+- `sh_number`: Shell script number, default: 0
+- `num_cores`: Maximum number of CPU cores to use, default: 10
+- `openai_api_key`: Required if using "GPT-3.5", "GPT-4" or `ret_method="openai-emb"`.
+- `gemini_api_key`: Required if using "gemini" in the model name.
+- `anthropic_api_key`: Required if using "claude-3" or "claude-2.1" in the model name.
