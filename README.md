@@ -28,15 +28,15 @@ Command Example:
 ```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "GPT-3.5" --quantization "4bit" --script_name "friends" --ret_method "bm25" --history_type "session-entire" --sleep_time 6 --openai_api_key "<<YOUR_OPENAI_API_KEY>>"  --trial_version 0 --sh_number 0 --num_cores 10```
 
 #### Arguments
-a) model_name: name of the model (one of "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "GPT-3.5", "GPT-4", "claude-3", "claude-2.1", and "gemini"). Default: "GPT-3.5"
+a) model_name: name of the model (should be one of "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "GPT-3.5", "GPT-4", "claude-3", "claude-2.1", and "gemini"). Default: "GPT-3.5"
 
-b) quantization: 
+b) quantization: decide whether to quantize the model (should be one of "no", "16bit", "8bit", and "4bit"). Default: "no"
 
-c) script_name:
+c) script_name: name of the script (should be one of "friends", "bigbang", and "theoffice"). Default: "friends"
 
-d) sleep_time: 
+d) sleep_time: value of the time limit. Default: "5"
 
-e) history_type: 
+e) history_type: the method of saving history (should be one of "utts", "session-entire", and "session-summary"). Default: "session-entire"
 
 f) num_ret_history: 
 
