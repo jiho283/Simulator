@@ -13,6 +13,8 @@ v1.1 (June 2024): To incorporate more diverse and challenging data, this version
 
 ## Experimental Setup
 
+After downloading appropriate ```torch``` version, do:
+
 1. ```pip install -r requirements.txt```
 
 2. ```mkdir data```
