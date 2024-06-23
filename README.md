@@ -33,7 +33,7 @@ Command Example:
 - `script_name`: TV show script for the simulation, default is "friends". Options include "friends", "bigbang", and "theoffice".
 - `sleep_time`: Response time limit, default: 5
 - `history_type`: Method for saving history, default is "session-entire". Options include "utts", "session-entire", and "session-summary".
-- `num_ret_history`: Number of retrieved histories to use. Modify lines 182-240 in `simulator.py` to change this number.
+- `num_ret_history`: Number of retrieved histories to use. Modify lines 184-242 in `simulator.py` to change this number.
 - `ret_method`: Retrieval method, default is "bm25". Options include "openai-emb", "bm25", "no_ret", and "oracle".
 - `name_shuffle`: Type of adversarial test, default is "original". Options include "original", "shuffle", and "new_name".
 - `trial_version`: Experiment version number, default: 0
@@ -42,6 +42,7 @@ Command Example:
 - `openai_api_key`: Required if using "GPT-3.5", "GPT-4" or `ret_method="openai-emb"`.
 - `gemini_api_key`: Required if using "gemini" in the model name.
 - `anthropic_api_key`: Required if using "claude-3" or "claude-2.1" in the model name.
+- `fast_eval`: When set to "yes", the simulator proceeds to the next utterance without waiting for the time interval if the history has already been updated. The default setting is "yes". Options include "yes" and "no".
 
 
 ## Python Package

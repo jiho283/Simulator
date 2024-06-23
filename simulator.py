@@ -43,6 +43,7 @@ def parse_args():
     parser.add_argument('--openai_api_key', type=str, default="", help="OpenAI API Key")
     parser.add_argument('--gemini_api_key', type=str, default="", help="Gemini API key")
     parser.add_argument('--antrhopic_api_key', type=str, default="", help="Anthropic API key")
+    parser.add_argument('--fast_eval', type=str, default="yes", help="When set to 'yes', the simulator proceeds to the next utterance without waiting for the time interval if the history has already been updated. Should be one of ('yes', 'no')")
     return parser.parse_args()
 
 def answer_question(model_name, client, model, tokenizer, config, prompt):
@@ -150,7 +151,7 @@ def save_history(history_num, history, history_type, date, cur_conv_num, un, pos
 
 def simulator(
         script_name,
-        sleep_time=0.000001, 
+        sleep_time=5, 
         tkg_ratio=0.7, 
         num_ret_history = 5, 
         model_name:str="GPT-3.5", 
@@ -162,7 +163,8 @@ def simulator(
         name_shuffle:str='original',
         openai_api_key:str="",
         gemini_api_key:str="",
-        antrhopic_api_key:str=""
+        antrhopic_api_key:str="",
+        fast_eval:str="yes"
         ):
     """
     script_name: script name ('friends', 'bigbang', 'theoffice')
@@ -687,6 +689,10 @@ def simulator(
                         result, is_ambiguous = judge_eq(true_answer_op, answer)
                         if result_time >= sleep_time:
                             result = "Wrong (Timeout)"
+                        else:
+                            if fast_eval == "no":
+                                time.sleep(sleep_time-result_time)
+
                     already_asked = 1
                     # log results
                     answer_list.append(answer)
@@ -725,7 +731,11 @@ def simulator(
                         calibrated_distilled_answer_list.append(calibration[2])
                     
                 else:
-                    pass
+                    if fast_eval == "no":
+                        if save_time == None:
+                            pass
+                        else:
+                            time.sleep(sleep_time-save_time)
                 
                 if not already_pop and "session" in history_type and un < len(post_utterances) - 1:
                     if ret_method == 'openai-emb' or ret_method == 'no_ret':
@@ -800,7 +810,7 @@ if __name__ == "__main__":
     print(f"Available CPUs: {cpu_count}")
     
     log_info = simulator(script_name=args.script_name, history_type=args.history_type, sleep_time=args.sleep_time, num_ret_history=args.num_ret_history, model_name=args.model_name, \
-                        debug=args.debug, debug_n_episodes=args.debug_n_episodes, quantization=args.quantization, ret_method=args.ret_method, name_shuffle=args.name_shuffle, openai_api_key=args.openai_api_key, gemini_api_key=args.gemini_api_key, antrhopic_api_key=args.antrhopic_api_key)
+                        debug=args.debug, debug_n_episodes=args.debug_n_episodes, quantization=args.quantization, ret_method=args.ret_method, name_shuffle=args.name_shuffle, openai_api_key=args.openai_api_key, gemini_api_key=args.gemini_api_key, antrhopic_api_key=args.antrhopic_api_key, fast_eval=args.fast_eval)
 
     print()
     print('SCORE: ', log_info["score"])
