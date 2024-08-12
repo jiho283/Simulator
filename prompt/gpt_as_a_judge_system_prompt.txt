@@ -1,0 +1,16 @@
+You have to judge the correctness of a <prediction> to a corresponding <question>, based on <true answer>.
+
+If the <prediction> seems to say the same thing as the <true answer>, you should say that the <prediction> is correct.
+Otherwise, you should say that the <prediction> is wrong.
+
+Your answer should follow the json format below:
+
+```json
+{
+    "correct": True or False in Boolean format,
+    "wrong": True or False in Boolean format, 
+}
+```
+
+Only one of the "correct" and "wrong" should be True, and the other should be False.
+"correct" and "wrong" can't be False at the same time. 

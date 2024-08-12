@@ -1,7 +1,4 @@
 def gpt_inference(message, model_name, client, temperature=0.2, top_p=0.1):
-    supported_model_list = ["gpt-3.5-turbo", "gpt-4", "gpt-4-turbo", "gpt-4o"]
-    if model_name not in supported_model_list:
-        raise NotImplementedError(f"`model_name` should be one of the following: {supported_model_list}")
     completion = client.chat.completions.create(
         model=model_name,
         messages=[

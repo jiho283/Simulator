@@ -4,7 +4,7 @@ def load_model(model_name, quantization, gemini_api_key=""):
     model = None
     tokenizer = None
     config = None
-    if model_name in ["GPT-3.5", "GPT-4"]:
+    if "gpt" in model_name.lower():
         pass
     elif model_name == "claude-3" or model_name == "claude-2.1":
         pass

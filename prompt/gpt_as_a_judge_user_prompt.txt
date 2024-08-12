@@ -1,0 +1,8 @@
+<question>
+<<<QUESTION>>>
+
+<true answer>
+<<<TRUEANSWER>>>
+
+<prediction>
+<<<PREDICTION>>>

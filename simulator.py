@@ -16,7 +16,7 @@ import nltk
 
 from logging_results.logging import log_results, log_everything
 from post_processing.process_answer import judge_eq, distill_answer, calibrate
-from models.api_based_inference import gpt35_inference, gpt4_inference, claude_inference, gemini_inference
+from models.api_based_inference import gpt_inference, claude_inference, gemini_inference
 from models.open_source_model_inference import open_source_model_inference
 from models.load_opensource_model import load_opensource_tokenizer
 from models.load_model import load_model
@@ -27,7 +27,7 @@ from func_timeout import func_set_timeout, FunctionTimedOut, func_timeout
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name", type=str, default="GPT-3.5", help="name of the model. Default: 'GPT-3.5'.")
+    parser.add_argument("--model_name", type=str, default="gpt-3.5-turbo", help="name of the model. Default: 'gpt-3.5-turbo'.")
     parser.add_argument("--debug", action=argparse.BooleanOptionalAction, help="if set, use truncated dataset for debugging.")
     parser.add_argument("--debug_n_episodes", type=int, default=5, help="number of episodes to evalutate on debug mode.")
     parser.add_argument("--quantization", type=str, default="no", help="either to quantize the model or not. Default: False")
@@ -44,16 +44,14 @@ def parse_args():
     parser.add_argument('--gemini_api_key', type=str, default="", help="Gemini API key")
     parser.add_argument('--antrhopic_api_key', type=str, default="", help="Anthropic API key")
     parser.add_argument('--fast_eval', type=str, default="yes", help="When set to 'yes', the simulator proceeds to the next utterance without waiting for the time interval if the history has already been updated. Should be one of ('yes', 'no')")
+    parser.add_argument('--answer_format', type=str, default='multiple_choice', help="the format of the answer of the agent.")
     return parser.parse_args()
 
 def answer_question(model_name, client, model, tokenizer, config, prompt):
     answer = ""
     try:
-        if model_name in ["GPT-3.5", "GPT-4"]:
-            if model_name == "GPT-3.5":
-                answer = gpt35_inference(prompt, client)
-            else:
-                answer = gpt4_inference(prompt, client)
+        if "gpt" in model_name.lower():
+            answer = gpt_inference(prompt, model_name, client)
         elif model_name == "claude-3" or model_name == "claude-2.1":
             answer = claude_inference(prompt, model_name, client)
         elif model_name == "gemini":
@@ -111,11 +109,8 @@ def save_history(history_num, history, history_type, date, cur_conv_num, un, pos
         if un == len(post_utterances)-1:
             sum_prompt = open_file('./prompt/chatgpt_summarize_prompt.txt').replace('<<<DIALOG>>>', history)
             try:
-                if model_name in ["GPT-3.5", "GPT-4"]:
-                    if model_name == "GPT-3.5":
-                        history_sum = gpt35_inference(sum_prompt, client)
-                    else:
-                        history_sum = gpt4_inference(sum_prompt, client)
+                if "gpt" in model_name.lower():
+                    history_sum = gpt_inference(sum_prompt, model_name, client)
                 elif model_name == "claude-3" or model_name == "claude-2.1":
                     history_sum = claude_inference(sum_prompt, model_name, client)
                 elif model_name == "gemini":
@@ -154,7 +149,7 @@ def simulator(
         sleep_time=5, 
         tkg_ratio=0.7, 
         num_ret_history = 5, 
-        model_name:str="GPT-3.5", 
+        model_name:str="gpt-3.5-turbo", 
         debug:bool=False, 
         debug_n_episodes:int=5,
         quantization:str="no",
@@ -164,7 +159,8 @@ def simulator(
         openai_api_key:str="",
         gemini_api_key:str="",
         antrhopic_api_key:str="",
-        fast_eval:str="yes"
+        fast_eval:str="yes",
+        answer_format:str="multiple_choice"
         ):
     """
     script_name: script name ('friends', 'bigbang', 'theoffice')
@@ -207,15 +203,15 @@ def simulator(
         llama_tokenizer = ""
 
     max_token_len = 0
-    if model_name == "GPT-3.5":
+    if model_name == "gpt-3.5-turbo":
         max_token_len = 16000
-    elif model_name == "GPT-4":
+    elif "gpt-4" in model_name.lower():
         max_token_len = 128000
     elif model_name == "claude-3" or model_name == "claude-2.1":
         max_token_len = 200000
     elif model_name == "gemini":
         max_token_len = 32000
-    elif 'tulu' in model_name:
+    elif 'tulu' in model_name.lower():
         max_token_len = 6000
     else:
         try:
@@ -224,19 +220,17 @@ def simulator(
             max_token_len = 4000
     
     if ret_method == "oracle":
-        if model_name == "GPT-3.5":
-            num_ret_history = 20
-        elif model_name == "GPT-4":
+        if "gpt" in model_name.lower():
             num_ret_history = 20
         elif model_name == "claude-3" or model_name == "claude-2.1":
             num_ret_history = 20
-        elif "gemini" in model_name:
+        elif "gemini" in model_name.lower():
             num_ret_history = 20
-        elif 'tulu' in model_name:
+        elif 'tulu' in model_name.lower():
             num_ret_history = 4
-        elif 'llama2' in model_name:
+        elif 'llama2' in model_name.lower():
             num_ret_history = 2
-        elif 'gemma' in model_name:
+        elif 'gemma' in model_name.lower():
             num_ret_history = 10
         else:
             num_ret_history = 20
@@ -246,7 +240,7 @@ def simulator(
         openai_client = OpenAI(api_key=openai_api_key) 
     
     anthropic_client = None
-    if "claude" in model_name: 
+    if "claude" in model_name.lower(): 
         anthropic_client = Anthropic(api_key=antrhopic_api_key)
     
     if "gpt" in model_name.lower():
@@ -620,16 +614,35 @@ def simulator(
                     if true_answer_op == '':
                         continue
                     
+                    if answer_format in ['structured', 'unstructured']:
+                        if true_answer_op == "(E)":
+                            true_answer_op = "I don't know."
+                        else:
+                            true_answer_op = true_answer
+                        
+
                     question_part_prompt = ''
 
-                    question_part_prompt += f'{char_ask}: {real_question}\n'
+                    question_part_prompt += f'{char_ask}: {real_question}'
                     options = target_question_list[real_tar_id]['options']
-                    question_part_prompt += f'\t(A) {options[0]}\n'
-                    question_part_prompt += f'\t(B) {options[1]}\n'
-                    question_part_prompt += f'\t(C) {options[2]}\n'
-                    question_part_prompt += f'\t(D) {options[3]}\n'
-                    question_part_prompt += f'\t(E) {options[4]}'
-                              
+                    if answer_format == 'multiple_choice':
+                        question_part_prompt += '\n'
+                        question_part_prompt += f'\t(A) {options[0]}\n'
+                        question_part_prompt += f'\t(B) {options[1]}\n'
+                        question_part_prompt += f'\t(C) {options[2]}\n'
+                        question_part_prompt += f'\t(D) {options[3]}\n'
+                        question_part_prompt += f'\t(E) {options[4]}'
+                    elif answer_format == 'unstructured':
+                        pass
+                    elif answer_format == 'structured':
+                        question_part_prompt += ' '
+                        question_part_prompt += f'{options[0]}? or '
+                        question_part_prompt += f'{options[1]}? or '
+                        question_part_prompt += f'{options[2]}? or '
+                        question_part_prompt += f'{options[3]}? or '
+                        question_part_prompt += f"you don't know?"
+                    else:
+                        raise ValueError("Invalid answer format. Should be one of ('multiple_choice', 'structured', 'unstructured')")
                     """Start of Answering. Time measure starts HERE"""
                     # time measure START
                     ans_timeout_flag = False
@@ -658,12 +671,13 @@ def simulator(
                         # Model inference
                             question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                             chatbot_sh = name_change(script_name, chatbot, name_shuffle)
-                            
+                            if answer_format not in ['multiple_choice', 'structured', 'unstructured']:
+                                raise ValueError("Invalid answer format. Should be one of ('multiple_choice', 'structured', 'unstructured')")
                             if ret_method == 'no_ret':
-                                prompt = open_file('./prompt/naive_llm_inference.txt').replace('<<<Date>>>', date).replace('<<<Dialog_History>>>', ret_histories).replace('<<<Question>>>', question_part_prompt_sh).replace('<<<Chatbot>>>', chatbot_sh)
+                                prompt = open_file(f'./prompt/naive_llm_inference_{answer_format}.txt').replace('<<<Date>>>', date).replace('<<<Dialog_History>>>', ret_histories).replace('<<<Question>>>', question_part_prompt_sh).replace('<<<Chatbot>>>', chatbot_sh)
                             else:
-                                prompt = open_file('./prompt/RAG_qa_prompt.txt').replace('<<<Date>>>', date).replace('<<<Dialog_History>>>', ret_histories).replace('<<<Question>>>', question_part_prompt_sh).replace('<<<Chatbot>>>', chatbot_sh)
-                            
+                                prompt = open_file(f'./prompt/RAG_qa_prompt_{answer_format}.txt').replace('<<<Date>>>', date).replace('<<<Dialog_History>>>', ret_histories).replace('<<<Question>>>', question_part_prompt_sh).replace('<<<Chatbot>>>', chatbot_sh)
+                        
                             ans_start_time = time.time()
                             try:
                                 answer = func_timeout(sleep_time-save_time-retrieve_search_time, answer_question, args=(model_name, client, model, tokenizer, config, prompt))
@@ -686,7 +700,7 @@ def simulator(
                     
                     is_ambiguous = False
                     if not ans_timeout_flag and not save_timeout_flag and not search_timeout_flag:
-                        result, is_ambiguous = judge_eq(true_answer_op, answer)
+                        result, is_ambiguous = judge_eq(true_answer_op, answer, question_part_prompt_sh, client, answer_format=answer_format)
                         if result_time >= sleep_time:
                             result = "Wrong (Timeout)"
                         else:
@@ -716,13 +730,14 @@ def simulator(
                     print(f'--------------------------------------------------------------------------')
                     
                     if is_ambiguous:
-                        ambiguous_idx_list.append((epi, sc_num, question_part_prompt))
+                        ambiguous_idx_list.append((epi, sc_num, question_part_prompt_sh))
                         ambiguous_answer_list.append(answer)
                         ambiguous_gold_answer_list.append(true_answer_op)
 
                     distilled_answer = distill_answer(answer)
-                    ret_histories_question_answer_list.append((ret_histories, question_part_prompt, true_answer_op, distilled_answer))
-                    calibration = calibrate(true_answer_op, answer, question_part_prompt, distilled_answer, lenient=True) # (result, is_ambiguous, calibrated_distilled_answer)
+                    ret_histories_question_answer_list.append((ret_histories, question_part_prompt_sh, true_answer_op, distilled_answer))
+                    
+                    calibration = calibrate(result, is_ambiguous, true_answer_op, answer, question_part_prompt_sh, distilled_answer, answer_format=answer_format, lenient=True) # (result, is_ambiguous, calibrated_distilled_answer)
                     if isinstance(result_time, float) and result_time >= sleep_time:
                         calibrated_result_list.append("Wrong (Timeout)")
                         calibrated_distilled_answer_list.append("Wrong (Timeout)")
@@ -810,7 +825,7 @@ if __name__ == "__main__":
     print(f"Available CPUs: {cpu_count}")
     
     log_info = simulator(script_name=args.script_name, history_type=args.history_type, sleep_time=args.sleep_time, num_ret_history=args.num_ret_history, model_name=args.model_name, \
-                        debug=args.debug, debug_n_episodes=args.debug_n_episodes, quantization=args.quantization, ret_method=args.ret_method, name_shuffle=args.name_shuffle, openai_api_key=args.openai_api_key, gemini_api_key=args.gemini_api_key, antrhopic_api_key=args.antrhopic_api_key, fast_eval=args.fast_eval)
+                        debug=args.debug, debug_n_episodes=args.debug_n_episodes, quantization=args.quantization, ret_method=args.ret_method, name_shuffle=args.name_shuffle, openai_api_key=args.openai_api_key, gemini_api_key=args.gemini_api_key, antrhopic_api_key=args.antrhopic_api_key, fast_eval=args.fast_eval, answer_format=args.answer_format)
 
     print()
     print('SCORE: ', log_info["score"])
