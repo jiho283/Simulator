@@ -86,13 +86,13 @@ def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi
             return result, is_ambiguous
         else:
             result = gpt_judge(question, true_answer_op, answer, client)
-            import pdb; pdb.set_trace() 
+
             if result == "Ambiguous":
                 is_ambiguous = True
             return result, is_ambiguous
     else:
         result = gpt_judge(question, true_answer_op, answer, client)
-        import pdb; pdb.set_trace() 
+
         if result == "Ambiguous":
             is_ambiguous = True
         return result, is_ambiguous

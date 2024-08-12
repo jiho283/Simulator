@@ -238,13 +238,16 @@ def simulator(
     openai_client = None
     if 'gpt' in model_name.lower() or 'openai' in ret_method:
         openai_client = OpenAI(api_key=openai_api_key) 
-    
+    if answer_format in ['structured', 'unstructured']:
+        openai_client = OpenAI(api_key=openai_api_key)
     anthropic_client = None
     if "claude" in model_name.lower(): 
         anthropic_client = Anthropic(api_key=antrhopic_api_key)
     
     if "gpt" in model_name.lower():
         client = openai_client
+        if answer_format in ['structured', 'unstructured']:
+            client = OpenAI(api_key=openai_api_key)
     elif "claude" in model_name.lower():
         client = anthropic_client
     else:
