@@ -76,11 +76,20 @@ def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi
             result = 'Correct'
         return result, is_ambiguous
     elif answer_format in ["multi_choice_unstructured", "open_ended"]:
-        result = gpt_judge(question, true_answer_op, answer, client)
+        if answer == true_answer_op:
+            result = "Correct"
+            is_ambiguous = False
+            return result, is_ambiguous
+        elif answer == f"{true_answer_op}.":
+            result = "Correct"
+            is_ambiguous = False
+            return result, is_ambiguous
+        else:
+            result = gpt_judge(question, true_answer_op, answer, client)
+            if result == "Ambiguous":
+                is_ambiguous = True
+            return result, is_ambiguous
 
-        if result == "Ambiguous":
-            is_ambiguous = True
-        return result, is_ambiguous
         
 def distill_answer(answer):
     # answer: model output
