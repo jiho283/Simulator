@@ -7,4 +7,3 @@ Note the following points:
 [Retrieved Dialog History]
 <<<Dialog_History>>>
 [Question] <<<Question>>>
-[Answer]

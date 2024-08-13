@@ -56,4 +56,4 @@ Command Example:
 
 ## Python Package
 We plan to make this simulator into a Python package (`pip install dialsim`).
-This currently (Aug 12, 2024) supports multi_choice_structured format for agent's answer, but will support multi_choice_unstructured and open_ended textual answer soon (before Sep 1, 2024).  
+This currently (Aug 12, 2024) supports `"multi_choice_structured"` format for agent's answer, but will support `"multi_choice_unstructured"` and `"open_ended"` formatted answer soon (before Sep 1, 2024).  
