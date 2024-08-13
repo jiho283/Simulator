@@ -1,0 +1,337 @@
+{
+  "score": 0.47058823529411764,
+  "calibrated_score": 0.47058823529411764,
+  "result_time_mean": 1.5760387112112606,
+  "simulator_running_time": 209.41859030723572,
+  "result_list": [
+    "Correct",
+    "Correct",
+    "Correct",
+    "Correct",
+    "Wrong",
+    "Correct",
+    "Wrong",
+    "Wrong",
+    "Correct",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Correct",
+    "Correct"
+  ],
+  "result_time_list": [
+    1.3372583389282227,
+    1.367516040802002,
+    1.2561695575714111,
+    1.4960777759552002,
+    1.7268848419189453,
+    1.5129830837249756,
+    1.15739107131958,
+    2.0546560287475586,
+    1.523338794708252,
+    2.4329042434692383,
+    1.306854009628296,
+    1.2766575813293457,
+    1.6645827293395996,
+    1.7893786430358887,
+    1.3747978210449219,
+    2.147660970687866,
+    1.367546558380127
+  ],
+  "ambiguous_idx_list": [],
+  "ambiguous_answer_list": [],
+  "ambiguous_gold_answer_list": [],
+  "answer_list": [
+    "I don't know the answer to that. The retrieved dialog history does not provide any information about Rachel or her boots.",
+    "I don't know the answer.",
+    "I don't know the answer to that question.",
+    "Chandler was referring to Paul the Wine Guy, who was going out with Monica on September 22, 1994.",
+    "Based on the retrieved dialog history, the only person mentioned as a Lincoln High survivor is Rachel. Monica introduces her to the group, saying, \"this is Rachel, another Lincoln High survivor.\" There is no further information provided about other alumni from Lincoln High. Therefore, I don't know who else counts themselves among the illustrious alumni of Lincoln High.",
+    "I'm sorry, but the retrieved dialog history does not contain any information about Franny or her vacation destination. Therefore, I don't know the answer to your question.",
+    "I don't know the answer.",
+    "Based on the retrieved dialog history, Joey mentioned that he had a date with someone named Andrea (or Angela, as he seemed unsure). However, there is no specific mention of who was going out with Joey on September 22, 1994. Therefore, I don't know the answer to that question.",
+    "I don't know the answer.",
+    "I don't know the answer to that. The retrieved dialog history does not provide information about who Andrea's date was on the night of September 22, 1994.",
+    "I don't know the answer.",
+    "I don't know the answer to that question.",
+    "I don't know the answer to that question. The retrieved dialog history does not provide information about the identity of the person Paul went on a date with or who their \"mama bear\" is.",
+    "I don't know the answer to that question. The retrieved dialog history does not provide information about who Mr. Geller's daughter was sharing her apartment with on September 22, 1994.",
+    "I don't know the answer to that.",
+    "Rachel was freaking out about losing her engagement ring, but it seems she eventually found it.",
+    "I don't know the answer to that question."
+  ],
+  "gold_answer_list": [
+    "I don't know.",
+    "I don't know.",
+    "I don't know.",
+    "Paul",
+    "Monica",
+    "I don't know.",
+    "Paul",
+    "Andrea",
+    "I don't know.",
+    "Joey",
+    "Carol",
+    "Ross",
+    "Mrs. geller",
+    "Rachel",
+    "Rachel",
+    "An engagement ring",
+    "I don't know."
+  ],
+  "ret_histories_question_answer_list": [
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #1, Utterance #20] Monica: Are you okay, sweetie?\n[Date: September 22, 1994, Session #1, Utterance #16] Monica: And they weren't looking at you before?!\n[Date: September 22, 1994, Session #1, Utterance #34] Ross: No!! Okay?! Why does everyone keep fixating on that? She didn't know, how should I know?\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 22, 1994, Session #1, Utterance #25] Monica:  Let me get you some coffee.\n[Date: September 22, 1994, Session #1, Utterance #1] Monica: There's nothing to tell! He's just some guy I work with!\n[Date: September 22, 1994, Session #1, Utterance #4] Phoebe: Wait, does he eat chalk?\n[Date: September 22, 1994, Session #1, Utterance #22] Chandler: Cookie?\n[Date: September 22, 1994, Session #1, Utterance #27] Phoebe: Ooh! Oh!\n[Date: September 22, 1994, Session #1, Utterance #31] Monica: No you don't.\n[Date: September 22, 1994, Session #1, Utterance #33] Joey: And you never knew she was a lesbian...\n[Date: September 22, 1994, Session #1, Utterance #5] Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\n[Date: September 22, 1994, Session #1, Utterance #32] Ross: No I don't, to hell with her, she left me!\n[Date: September 22, 1994, Session #1, Utterance #7] Chandler: Sounds like a date to me.\n[Date: September 22, 1994, Session #1, Utterance #15] Chandler: All of a sudden, the phone starts to ring. Now I don't know what to do, everybody starts looking at me.\n[Date: September 22, 1994, Session #1, Utterance #10] Chandler: Then I look down, and I realize there's a phone... there.\n[Date: September 22, 1994, Session #1, Utterance #14] Phoebe: No.\n[Date: September 22, 1994, Session #1, Utterance #29] Phoebe: Fine!  Be murky!\n[Date: September 22, 1994, Session #1, Utterance #18] Ross:  Hi.\n",
+      "Monica: Hey, do you know what Rachel used to snag those super cute new boots she's been rocking?",
+      "I don't know.",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #1, Utterance #4] Phoebe: Wait, does he eat chalk?\n[Date: September 22, 1994, Session #2, Utterance #8] Phoebe, Ross, Chandler, and Joey:  Push her down the stairs! Push her down the stairs! Push her down the stairs!\n[Date: September 22, 1994, Session #1, Utterance #22] Chandler: Cookie?\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #1, Utterance #27] Phoebe: Ooh! Oh!\n[Date: September 22, 1994, Session #1, Utterance #35] Chandler: Sometimes I wish I was a lesbian...  Did I say that out loud?\n[Date: September 22, 1994, Session #2, Utterance #15] Phoebe:  Raindrops on roses and rabbits and kittens,  bluebells and sleighbells and- something with mittens... La la la la...something and noodles with string.  These are a few...\n[Date: September 22, 1994, Session #1, Utterance #14] Phoebe: No.\n[Date: September 22, 1994, Session #2, Utterance #17] Phoebe:  I helped!\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #1, Utterance #10] Chandler: Then I look down, and I realize there's a phone... there.\n[Date: September 22, 1994, Session #2, Utterance #30] Chandler: Ooh, this is a Dear Diary moment.\n[Date: September 22, 1994, Session #1, Utterance #29] Phoebe: Fine!  Be murky!\n[Date: September 22, 1994, Session #2, Utterance #6] Chandler:  Ooh, she should not be wearing those pants.\n[Date: September 22, 1994, Session #1, Utterance #15] Chandler: All of a sudden, the phone starts to ring. Now I don't know what to do, everybody starts looking at me.\n[Date: September 22, 1994, Session #1, Utterance #12] Chandler: That's right.\n[Date: September 22, 1994, Session #1, Utterance #5] Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\n[Date: September 22, 1994, Session #1, Utterance #7] Chandler: Sounds like a date to me.\n",
+      "Phoebe: Oh my god, like, who's the furry little creature that Chandler calls his pet?",
+      "I don't know.",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #3, Utterance #13] Joey: Ross, let me ask you a question. She got the furniture, the stereo, the good TV- what did you get?\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #2, Utterance #49] Ross: So Rachel, what're you, uh... what're you up to tonight?\n[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #2, Utterance #8] Phoebe, Ross, Chandler, and Joey:  Push her down the stairs! Push her down the stairs! Push her down the stairs!\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #2, Utterance #20] Monica: Joey, stop hitting on her! It's her wedding day!\n[Date: September 22, 1994, Session #2, Utterance #51] Ross: Right, you're not even getting your honeymoon, God.. No, no, although, Aruba, this time of year... talk about your-  -big lizards... Anyway, if you don't feel like being alone tonight, Joey and Chandler are coming over to help me put together my new furniture.\n[Date: September 22, 1994, Session #1, Utterance #44] Rachel: Oh God Monica hi! Thank God! I just went to your building and you weren't there and then this guy with a big hammer said you might be here and you are, you are!\n[Date: September 22, 1994, Session #1, Utterance #50] Rachel: Oh God... well, it started about a half hour before the wedding. I was in the room where we were keeping all the presents, and I was looking at this gravy boat. This really gorgeous Lamauge gravy boat. When all of a sudden- Sweet 'n' Lo?- I realized that I was more turned on by this gravy boat than by Barry! And then I got really freaked out, and that's when it hit me: how much Barry looks like Mr. Potato Head. Y'know, I mean, I always knew looked familiar, but... Anyway, I just had to get out of there, and I started wondering 'Why am I doing this, and who am I doing this for?'.  So anyway I just didn't know where to go, and I know that you and I have kinda drifted apart, but you're the only person I knew who lived here in the city.\n[Date: September 22, 1994, Session #1, Utterance #2] Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!\n[Date: September 22, 1994, Session #1, Utterance #33] Joey: And you never knew she was a lesbian...\n[Date: September 22, 1994, Session #2, Utterance #9] Rachel: C'mon Daddy, listen to me! It's like, it's like, all of my life, everyone has always told me, 'You're a shoe! You're a shoe, you're a shoe, you're a shoe!'. And today I just stopped and I said, 'What if I don't wanna be a shoe? What if I wanna be a- a purse, y'know? Or a- or a hat! No, I'm not saying I want you to buy me a hat, I'm saying I am a ha- It's a metaphor, Daddy!\n[Date: September 22, 1994, Session #2, Utterance #7] Joey: I say push her down the stairs.\n[Date: September 22, 1994, Session #2, Utterance #6] Chandler:  Ooh, she should not be wearing those pants.\n[Date: September 22, 1994, Session #2, Utterance #48] Monica:  Shut up, Joey!\n[Date: September 22, 1994, Session #2, Utterance #11] Rachel: Look Daddy, it's my life. Well maybe I'll just stay here with Monica.\n[Date: September 22, 1994, Session #2, Utterance #55] Joey: Hey Pheebs, you wanna help?\n[Date: September 22, 1994, Session #1, Utterance #39] Joey: Alright Ross, look. You're feeling a lot of pain right now. You're angry. You're hurting. Can I tell you what the answer is?\n",
+      "Joey: Hey, how did Rachel manage to snag those killer boots, huh?",
+      "I don't know.",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #1, Utterance #7] Chandler: Sounds like a date to me.\n[Date: September 22, 1994, Session #1, Utterance #35] Chandler: Sometimes I wish I was a lesbian...  Did I say that out loud?\n[Date: September 22, 1994, Session #4, Utterance #5] Chandler: Look, Ross, you gotta understand, between us we haven't had a relationship that has lasted longer than a Mento.   You, however have had the love of a woman for four years.   Four years of closeness and sharing at the end of which she ripped your heart out, and that is why we don't do it!  I don't think that was my point!\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #3, Utterance #7] Chandler: I have no idea.\n[Date: September 22, 1994, Session #2, Utterance #12] Monica: Well, I guess we've established who's staying here with Monica...\n[Date: September 22, 1994, Session #2, Utterance #6] Chandler:  Ooh, she should not be wearing those pants.\n[Date: September 22, 1994, Session #1, Utterance #22] Chandler: Cookie?\n[Date: September 22, 1994, Session #3, Utterance #15] Chandler: Oh, God.\n[Date: September 22, 1994, Session #1, Utterance #12] Chandler: That's right.\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #2, Utterance #35] Monica:  Really?\n[Date: September 22, 1994, Session #1, Utterance #6] Monica: Okay, everybody relax. This is not even a date. It's just two people going out to dinner and- not having sex.\n[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #3, Utterance #17] Chandler: Oh my God!\n[Date: September 22, 1994, Session #1, Utterance #51] Monica: Who wasn't invited to the wedding.\n[Date: September 22, 1994, Session #2, Utterance #40] Chandler: I'm sorry, I didn't catch your name. Paul, was it?\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n",
+      "Chandler: Oh, could you BE any more specific about who was going out with Monica on September 22, 1994?",
+      "Paul",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #1, Utterance #8] Chandler: Alright, so I'm back in high school, I'm standing in the middle of the cafeteria, and I realize I am totally naked.\n[Date: September 22, 1994, Session #1, Utterance #35] Chandler: Sometimes I wish I was a lesbian...  Did I say that out loud?\n[Date: September 22, 1994, Session #1, Utterance #15] Chandler: All of a sudden, the phone starts to ring. Now I don't know what to do, everybody starts looking at me.\n[Date: September 22, 1994, Session #3, Utterance #17] Chandler: Oh my God!\n[Date: September 22, 1994, Session #1, Utterance #22] Chandler: Cookie?\n[Date: September 22, 1994, Session #2, Utterance #30] Chandler: Ooh, this is a Dear Diary moment.\n[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #3, Utterance #15] Chandler: Oh, God.\n[Date: September 22, 1994, Session #2, Utterance #40] Chandler: I'm sorry, I didn't catch your name. Paul, was it?\n[Date: September 22, 1994, Session #3, Utterance #7] Chandler: I have no idea.\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #1, Utterance #12] Chandler: That's right.\n[Date: September 22, 1994, Session #1, Utterance #10] Chandler: Then I look down, and I realize there's a phone... there.\n[Date: September 22, 1994, Session #1, Utterance #42] Chandler: And I just want a million dollars!\n[Date: September 22, 1994, Session #2, Utterance #52] Chandler:  Yes, and we're very excited about it.\n[Date: September 22, 1994, Session #1, Utterance #17] Chandler: Finally, I figure I'd better answer it, and it turns out it's my mother, which is very-very weird, because- she never calls me!\n[Date: September 22, 1994, Session #2, Utterance #6] Chandler:  Ooh, she should not be wearing those pants.\n[Date: September 22, 1994, Session #1, Utterance #7] Chandler: Sounds like a date to me.\n[Date: September 22, 1994, Session #3, Utterance #5] Chandler: I would have to say that is an 'L'-shaped bracket.\n",
+      "Chandler: Oh, could we BE any more inquisitive? Who exactly counts themselves among the illustrious alumni of Lincoln high?",
+      "Monica",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #2, Utterance #12] Monica: Well, I guess we've established who's staying here with Monica...\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #2, Utterance #35] Monica:  Really?\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 22, 1994, Session #2, Utterance #41] Monica: Okay, umm-umm, I'll just--I'll be right back, I just gotta go ah, go ah...\n[Date: September 22, 1994, Session #1, Utterance #20] Monica: Are you okay, sweetie?\n[Date: September 22, 1994, Session #2, Utterance #29] Monica: Yes!\n[Date: September 22, 1994, Session #1, Utterance #44] Rachel: Oh God Monica hi! Thank God! I just went to your building and you weren't there and then this guy with a big hammer said you might be here and you are, you are!\n[Date: September 23, 1994, Session #1, Utterance #2] Monica: Why?! Why? Why, why would anybody do something like that?\n[Date: September 22, 1994, Session #1, Utterance #25] Monica:  Let me get you some coffee.\n[Date: September 22, 1994, Session #2, Utterance #24] Monica: Oh God, is it 6:30?  Buzz him in!\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #1, Utterance #37] Monica: Oh really, so that hysterical phone call I got from a woman at sobbing 3:00 A.M., \"I'll never have grandchildren, I'll never have grandchildren.\" was what?  A wrong number?\n[Date: September 22, 1994, Session #2, Utterance #33] Monica:  Are, are you okay? I mean, do you want me to stay?\n[Date: September 22, 1994, Session #2, Utterance #11] Rachel: Look Daddy, it's my life. Well maybe I'll just stay here with Monica.\n[Date: September 23, 1994, Session #1, Utterance #8] Monica: I just thought he was nice, y'know?\n[Date: September 22, 1994, Session #2, Utterance #18] Monica: Okay, look, this is probably for the best, y'know? Independence. Taking control of your life.  The whole, 'hat' thing.\n[Date: September 22, 1994, Session #2, Utterance #43] Monica: Change!  Okay, sit down.  Two seconds.\n[Date: September 22, 1994, Session #2, Utterance #50] Rachel: Well, I was kinda supposed to be headed for Aruba on my honeymoon, so nothing!\n",
+      "Monica: Oh my God, you remember that chat we had back on September 23, 1994, right? So, where was it again that Franny jetted off to for her vacay?",
+      "I don't know.",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #1, Utterance #44] Rachel: Oh God Monica hi! Thank God! I just went to your building and you weren't there and then this guy with a big hammer said you might be here and you are, you are!\n[Date: September 23, 1994, Session #2, Utterance #16] Monica:  Rachel!  That was a library card!\n[Date: September 22, 1994, Session #2, Utterance #11] Rachel: Look Daddy, it's my life. Well maybe I'll just stay here with Monica.\n[Date: September 22, 1994, Session #2, Utterance #49] Ross: So Rachel, what're you, uh... what're you up to tonight?\n[Date: September 23, 1994, Session #1, Utterance #10] Rachel: Guess what?\n[Date: September 23, 1994, Session #2, Utterance #24] Rachel: Hey Mon, look what I just found on the floor.  What?\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #2, Utterance #12] Monica: Well, I guess we've established who's staying here with Monica...\n[Date: September 22, 1994, Session #2, Utterance #35] Monica:  Really?\n[Date: September 23, 1994, Session #2, Utterance #3] Rachel: I know that. That's why I was getting married.\n[Date: September 22, 1994, Session #1, Utterance #6] Monica: Okay, everybody relax. This is not even a date. It's just two people going out to dinner and- not having sex.\n[Date: September 22, 1994, Session #1, Utterance #47] Rachel: Hi, sure!\n[Date: September 22, 1994, Session #2, Utterance #31] Monica: Rach, wait, I can cancel...\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 22, 1994, Session #1, Utterance #52] Rachel: Ooh, I was kinda hoping that wouldn't be an issue...\n[Date: September 22, 1994, Session #2, Utterance #29] Monica: Yes!\n[Date: September 23, 1994, Session #1, Utterance #2] Monica: Why?! Why? Why, why would anybody do something like that?\n[Date: September 22, 1994, Session #1, Utterance #51] Monica: Who wasn't invited to the wedding.\n",
+      "Rachel: Oh my god, so like, who was going out with Monica on September 22, 1994?",
+      "Paul",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #2] Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!\n[Date: September 22, 1994, Session #1, Utterance #33] Joey: And you never knew she was a lesbian...\n[Date: September 22, 1994, Session #5, Utterance #2] Joey: Great story!  But, I uh, I gotta go, I got a date with Andrea--Angela--Andrea...  Oh man,\n[Date: September 22, 1994, Session #3, Utterance #13] Joey: Ross, let me ask you a question. She got the furniture, the stereo, the good TV- what did you get?\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #2, Utterance #25] Joey: Who's Paul?\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #1, Utterance #24] Joey: Ohh.\n[Date: September 22, 1994, Session #5, Utterance #4] Joey: Right.  Thanks.  It's June.  I'm outta here.\n[Date: September 22, 1994, Session #2, Utterance #45] Joey:  Hey, Paul!\n[Date: September 22, 1994, Session #1, Utterance #40] Joey: Strip joint! C'mon, you're single! Have some hormones!\n[Date: September 22, 1994, Session #3, Utterance #4] Joey:  What's this?\n[Date: September 22, 1994, Session #2, Utterance #48] Monica:  Shut up, Joey!\n[Date: September 22, 1994, Session #3, Utterance #6] Joey: Which goes where?\n[Date: September 22, 1994, Session #3, Utterance #16] Joey: You got screwed.\n[Date: September 22, 1994, Session #3, Utterance #11] Joey: Hey-hey-hey-hey, if you're gonna start with that stuff we're outta here.\n[Date: September 22, 1994, Session #1, Utterance #11] Joey: Instead of...?\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #4, Utterance #2] Joey: Shut up!\n[Date: September 22, 1994, Session #2, Utterance #55] Joey: Hey Pheebs, you wanna help?\n",
+      "Joey: Hey, just outta curiosity, who was goin' out with Joey on September 22, 1994?",
+      "Andrea",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #2, Utterance #12] Monica: Well, I guess we've established who's staying here with Monica...\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #2, Utterance #20] Monica: Joey, stop hitting on her! It's her wedding day!\n[Date: September 22, 1994, Session #1, Utterance #1] Monica: There's nothing to tell! He's just some guy I work with!\n[Date: September 22, 1994, Session #1, Utterance #2] Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!\n[Date: September 22, 1994, Session #1, Utterance #5] Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #5, Utterance #2] Joey: Great story!  But, I uh, I gotta go, I got a date with Andrea--Angela--Andrea...  Oh man,\n[Date: September 22, 1994, Session #2, Utterance #1] Monica: Now I'm guessing that he bought her the big pipe organ, and she's really not happy about it.\n[Date: September 23, 1994, Session #1, Utterance #19] Monica: And who pays for that?\n[Date: September 23, 1994, Session #2, Utterance #42] Monica: See ya.... Waitwait, what's with you?\n[Date: September 23, 1994, Session #1, Utterance #8] Monica: I just thought he was nice, y'know?\n[Date: September 22, 1994, Session #1, Utterance #44] Rachel: Oh God Monica hi! Thank God! I just went to your building and you weren't there and then this guy with a big hammer said you might be here and you are, you are!\n[Date: September 22, 1994, Session #2, Utterance #35] Monica:  Really?\n[Date: September 22, 1994, Session #1, Utterance #20] Monica: Are you okay, sweetie?\n[Date: September 22, 1994, Session #1, Utterance #51] Monica: Who wasn't invited to the wedding.\n[Date: September 23, 1994, Session #1, Utterance #2] Monica: Why?! Why? Why, why would anybody do something like that?\n[Date: September 22, 1994, Session #2, Utterance #29] Monica: Yes!\n[Date: September 22, 1994, Session #1, Utterance #49] Monica: So you wanna tell us now, or are we waiting for four wet bridesmaids?\n",
+      "Monica: Oh my god! So, who's the current lucky guy dating Carl right now?",
+      "I don't know.",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #5, Utterance #2] Joey: Great story!  But, I uh, I gotta go, I got a date with Andrea--Angela--Andrea...  Oh man,\n[Date: September 30, 1994, Session #1, Utterance #6] Marsha: Speaking of issues, isn't that your ex-wife?\n[Date: September 30, 1994, Session #1, Utterance #2] Marsha: Well, she has issues.\n[Date: September 30, 1994, Session #1, Utterance #4] Marsha: He's out banging other women over the head with a club, while she sits at home trying to get the mastodon smell out of the carpet!\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #5, Utterance #3] Chandler: Angela's the screamer, Andrea has cats.\n[Date: September 22, 1994, Session #1, Utterance #51] Monica: Who wasn't invited to the wedding.\n[Date: September 22, 1994, Session #1, Utterance #6] Monica: Okay, everybody relax. This is not even a date. It's just two people going out to dinner and- not having sex.\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #2, Utterance #12] Monica: Well, I guess we've established who's staying here with Monica...\n[Date: September 23, 1994, Session #1, Utterance #17] Monica: How'd you pay for them?\n[Date: September 22, 1994, Session #2, Utterance #49] Ross: So Rachel, what're you, uh... what're you up to tonight?\n[Date: September 23, 1994, Session #1, Utterance #19] Monica: And who pays for that?\n[Date: September 22, 1994, Session #1, Utterance #50] Rachel: Oh God... well, it started about a half hour before the wedding. I was in the room where we were keeping all the presents, and I was looking at this gravy boat. This really gorgeous Lamauge gravy boat. When all of a sudden- Sweet 'n' Lo?- I realized that I was more turned on by this gravy boat than by Barry! And then I got really freaked out, and that's when it hit me: how much Barry looks like Mr. Potato Head. Y'know, I mean, I always knew looked familiar, but... Anyway, I just had to get out of there, and I started wondering 'Why am I doing this, and who am I doing this for?'.  So anyway I just didn't know where to go, and I know that you and I have kinda drifted apart, but you're the only person I knew who lived here in the city.\n[Date: September 22, 1994, Session #2, Utterance #28] Ross: He finally asked you out?\n[Date: September 22, 1994, Session #2, Utterance #35] Monica:  Really?\n[Date: September 22, 1994, Session #1, Utterance #7] Chandler: Sounds like a date to me.\n[Date: September 22, 1994, Session #1, Utterance #34] Ross: No!! Okay?! Why does everyone keep fixating on that? She didn't know, how should I know?\n[Date: September 23, 1994, Session #2, Utterance #16] Monica:  Rachel!  That was a library card!\n[Date: September 23, 1994, Session #1, Utterance #2] Monica: Why?! Why? Why, why would anybody do something like that?\n",
+      "Marsha: So, who was Andrea's date on the night of September 22, 1994?",
+      "Joey",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #2, Utterance #8] Phoebe, Ross, Chandler, and Joey:  Push her down the stairs! Push her down the stairs! Push her down the stairs!\n[Date: September 23, 1994, Session #2, Utterance #35] Ross: You did! Oh.... I always figured you just thought I was Monica's geeky older brother.\n[Date: September 30, 1994, Session #2, Utterance #10] Phoebe: Monica- Hi! Um, Monica, you're scaring me. I mean, you're like, you're like all chaotic and twirly. And not-not in a good way.\n[Date: September 30, 1994, Session #2, Utterance #25] Phoebe: Doy! Probably right before she lost it!\n[Date: September 22, 1994, Session #2, Utterance #49] Ross: So Rachel, what're you, uh... what're you up to tonight?\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #3, Utterance #13] Joey: Ross, let me ask you a question. She got the furniture, the stereo, the good TV- what did you get?\n[Date: September 22, 1994, Session #4, Utterance #5] Chandler: Look, Ross, you gotta understand, between us we haven't had a relationship that has lasted longer than a Mento.   You, however have had the love of a woman for four years.   Four years of closeness and sharing at the end of which she ripped your heart out, and that is why we don't do it!  I don't think that was my point!\n[Date: September 22, 1994, Session #4, Utterance #7] Joey: What are you talking about? 'One woman'? That's like saying there's only one flavor of ice cream for you. Lemme tell you something, Ross. There's lots of flavors out there. There's Rocky Road, and Cookie Dough, and Bing! Cherry Vanilla. You could get 'em with Jimmies, or nuts, or whipped cream! This is the best thing that ever happened to you! You got married, you were, like, what, eight? Welcome back to the world! Grab a spoon!\n[Date: September 30, 1994, Session #1, Utterance #3] Ross: Does she.\n[Date: September 29, 1994, Session #1, Utterance #3] Phoebe: Oh, yeah!\n[Date: September 22, 1994, Session #1, Utterance #27] Phoebe: Ooh! Oh!\n[Date: September 24, 1994, Session #1, Utterance #6] Phoebe: Oh, was I doing it again?\n[Date: September 22, 1994, Session #1, Utterance #14] Phoebe: No.\n[Date: September 22, 1994, Session #1, Utterance #5] Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\n[Date: September 30, 1994, Session #2, Utterance #7] Phoebe: She's already fluffed that pillow... Monica, you know, you've already fluffed that-  -but, it's fine!\n[Date: September 22, 1994, Session #5, Utterance #5] Ross: Y'know, here's the thing. Even if I could get it together enough to- to ask a woman out,... who am I gonna ask?\n[Date: September 22, 1994, Session #2, Utterance #17] Phoebe:  I helped!\n[Date: September 23, 1994, Session #2, Utterance #33] Ross: Okay.  You know you probably didn't know this, but back in high school, I had a, um, major crush on you.\n",
+      "Phoebe: Oh my gosh, so who's the woman that used to be like, Mrs. Ross?",
+      "Carol",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 30, 1994, Session #3, Utterance #16] Mrs. Geller: What that Rachel did to her life.... We ran into her parents at the club, they were not playing very well.\n[Date: September 30, 1994, Session #3, Utterance #6] Mrs. Geller: They all had a thing for him.\n[Date: September 30, 1994, Session #3, Utterance #18] Mrs. Geller: Well, at least she had the chance to leave a man at the altar...\n[Date: September 30, 1994, Session #3, Utterance #26] Ross:  Okay! Okay.  Look, I, uh- I realise you guys have been wondering what exactly happened between Carol and me, and, so, well, here's the deal. Carol's a lesbian. She's living with a woman named Susan. She's pregnant with my child, and she and Susan are going to raise the baby.\n[Date: September 30, 1994, Session #3, Utterance #3] Mrs. Geller: Mmmm!\n[Date: September 30, 1994, Session #3, Utterance #5] Mr. Geller:  Do you remember the Ludwins? The big one had a thing for you, didn't she?\n[Date: September 30, 1994, Session #3, Utterance #9] Mrs. Geller: Oh, she just graduated, and she wants to be something in cooking, or food, or.... I don't know. Anyway, I told her you had a restaurant-\n[Date: September 30, 1994, Session #1, Utterance #18] Ross: Why- why are you here, Carol?\n[Date: September 30, 1994, Session #3, Utterance #1] Mrs. Geller: Oh, Martha Ludwin's daughter is gonna call you.  Mmm! What's that curry taste?\n[Date: September 30, 1994, Session #3, Utterance #11] Mrs. Geller: Well, they don't have to know that...\n[Date: September 30, 1994, Session #1, Utterance #15] Carol: A lesbian?\n[Date: September 30, 1994, Session #1, Utterance #6] Marsha: Speaking of issues, isn't that your ex-wife?\n[Date: September 30, 1994, Session #2, Utterance #39] Ross: Carol's pregnant.\n[Date: September 30, 1994, Session #3, Utterance #20] Mrs. Geller: Nothing! It's an expression.\n[Date: September 30, 1994, Session #3, Utterance #17] Mr. Geller: I'm not gonna tell you what they spent on that wedding... but forty thousand dollars is a lot of money!\n[Date: September 30, 1994, Session #3, Utterance #14] Mrs. Geller: Oh, we're having spaghetti! That's.... easy.\n[Date: September 30, 1994, Session #1, Utterance #11] Carol: So.\n[Date: September 30, 1994, Session #1, Utterance #17] Carol: Marty's still totally paranoid. Oh, and, uh-\n[Date: September 30, 1994, Session #1, Utterance #8] Marsha: Yes, it is. Carol! Hi!\n[Date: September 30, 1994, Session #3, Utterance #24] Mr. Geller: ...And I read about these women trying to have it all, and I thank God 'Our Little Harmonica' doesn't seem to have that problem.\n",
+      "Mrs. Geller: Hey, just out of curiosity, who was Carol's ex-husband?",
+      "Ross",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #2, Utterance #25] Joey: Who's Paul?\n[Date: September 22, 1994, Session #1, Utterance #14] Phoebe: No.\n[Date: September 29, 1994, Session #1, Utterance #3] Phoebe: Oh, yeah!\n[Date: September 22, 1994, Session #1, Utterance #5] Phoebe: Just, 'cause, I don't want her to go through what I went through with Carl- oh!\n[Date: September 30, 1994, Session #2, Utterance #46] Phoebe: She is so great! I miss her.\n[Date: September 30, 1994, Session #2, Utterance #25] Phoebe: Doy! Probably right before she lost it!\n[Date: September 22, 1994, Session #1, Utterance #27] Phoebe: Ooh! Oh!\n[Date: September 23, 1994, Session #2, Utterance #4] Phoebe: Give her a break, it's hard being on your own for the first time.\n[Date: September 30, 1994, Session #2, Utterance #10] Phoebe: Monica- Hi! Um, Monica, you're scaring me. I mean, you're like, you're like all chaotic and twirly. And not-not in a good way.\n[Date: September 24, 1994, Session #1, Utterance #6] Phoebe: Oh, was I doing it again?\n[Date: September 30, 1994, Session #2, Utterance #2] Phoebe:...Then I've already seen this one!\n[Date: September 24, 1994, Session #1, Utterance #4] Phoebe:  What I said you had...\n[Date: September 30, 1994, Session #2, Utterance #40] Phoebe:  Ooh! I found it!\n[Date: September 22, 1994, Session #1, Utterance #4] Phoebe: Wait, does he eat chalk?\n[Date: September 22, 1994, Session #2, Utterance #17] Phoebe:  I helped!\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 22, 1994, Session #5, Utterance #2] Joey: Great story!  But, I uh, I gotta go, I got a date with Andrea--Angela--Andrea...  Oh man,\n[Date: September 22, 1994, Session #2, Utterance #45] Joey:  Hey, Paul!\n[Date: September 22, 1994, Session #2, Utterance #23] Paul:  It's, uh, it's Paul.\n",
+      "Phoebe: So, like, you know how Paul went on a date with that person on September 22, 1994? Who's the mama bear of that person?",
+      "Mrs. geller",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 30, 1994, Session #3, Utterance #16] Mrs. Geller: What that Rachel did to her life.... We ran into her parents at the club, they were not playing very well.\n[Date: September 30, 1994, Session #3, Utterance #27] Mrs. Geller:  And you knew about this?!\n[Date: September 30, 1994, Session #4, Utterance #25] Rachel: Oh, you've got Carol tomorrow.. When did it get so complicated?\n[Date: September 30, 1994, Session #3, Utterance #5] Mr. Geller:  Do you remember the Ludwins? The big one had a thing for you, didn't she?\n[Date: September 30, 1994, Session #3, Utterance #6] Mrs. Geller: They all had a thing for him.\n[Date: September 30, 1994, Session #3, Utterance #26] Ross:  Okay! Okay.  Look, I, uh- I realise you guys have been wondering what exactly happened between Carol and me, and, so, well, here's the deal. Carol's a lesbian. She's living with a woman named Susan. She's pregnant with my child, and she and Susan are going to raise the baby.\n[Date: September 30, 1994, Session #1, Utterance #15] Carol: A lesbian?\n[Date: September 30, 1994, Session #3, Utterance #1] Mrs. Geller: Oh, Martha Ludwin's daughter is gonna call you.  Mmm! What's that curry taste?\n[Date: September 30, 1994, Session #1, Utterance #18] Ross: Why- why are you here, Carol?\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 30, 1994, Session #4, Utterance #27] Rachel: Remember when we were in high school together?\n[Date: September 30, 1994, Session #3, Utterance #11] Mrs. Geller: Well, they don't have to know that...\n[Date: September 30, 1994, Session #1, Utterance #17] Carol: Marty's still totally paranoid. Oh, and, uh-\n[Date: September 30, 1994, Session #2, Utterance #39] Ross: Carol's pregnant.\n[Date: September 22, 1994, Session #1, Utterance #50] Rachel: Oh God... well, it started about a half hour before the wedding. I was in the room where we were keeping all the presents, and I was looking at this gravy boat. This really gorgeous Lamauge gravy boat. When all of a sudden- Sweet 'n' Lo?- I realized that I was more turned on by this gravy boat than by Barry! And then I got really freaked out, and that's when it hit me: how much Barry looks like Mr. Potato Head. Y'know, I mean, I always knew looked familiar, but... Anyway, I just had to get out of there, and I started wondering 'Why am I doing this, and who am I doing this for?'.  So anyway I just didn't know where to go, and I know that you and I have kinda drifted apart, but you're the only person I knew who lived here in the city.\n[Date: September 30, 1994, Session #3, Utterance #9] Mrs. Geller: Oh, she just graduated, and she wants to be something in cooking, or food, or.... I don't know. Anyway, I told her you had a restaurant-\n[Date: September 30, 1994, Session #3, Utterance #18] Mrs. Geller: Well, at least she had the chance to leave a man at the altar...\n[Date: September 30, 1994, Session #1, Utterance #8] Marsha: Yes, it is. Carol! Hi!\n[Date: September 30, 1994, Session #3, Utterance #3] Mrs. Geller: Mmmm!\n[Date: September 22, 1994, Session #3, Utterance #10] Ross:  This was Carol's favorite beer. She always drank it out of the can, I should have known.\n",
+      "Carol: Hey, just curious, do you know who Mr. geller's daughter was sharing her apartment with back on September 22, 1994?",
+      "Rachel",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 30, 1994, Session #3, Utterance #16] Mrs. Geller: What that Rachel did to her life.... We ran into her parents at the club, they were not playing very well.\n[Date: September 30, 1994, Session #3, Utterance #27] Mrs. Geller:  And you knew about this?!\n[Date: September 30, 1994, Session #3, Utterance #5] Mr. Geller:  Do you remember the Ludwins? The big one had a thing for you, didn't she?\n[Date: September 30, 1994, Session #4, Utterance #25] Rachel: Oh, you've got Carol tomorrow.. When did it get so complicated?\n[Date: September 30, 1994, Session #3, Utterance #6] Mrs. Geller: They all had a thing for him.\n[Date: September 30, 1994, Session #3, Utterance #26] Ross:  Okay! Okay.  Look, I, uh- I realise you guys have been wondering what exactly happened between Carol and me, and, so, well, here's the deal. Carol's a lesbian. She's living with a woman named Susan. She's pregnant with my child, and she and Susan are going to raise the baby.\n[Date: September 30, 1994, Session #3, Utterance #1] Mrs. Geller: Oh, Martha Ludwin's daughter is gonna call you.  Mmm! What's that curry taste?\n[Date: September 30, 1994, Session #1, Utterance #15] Carol: A lesbian?\n[Date: September 30, 1994, Session #1, Utterance #18] Ross: Why- why are you here, Carol?\n[Date: September 30, 1994, Session #4, Utterance #27] Rachel: Remember when we were in high school together?\n[Date: September 30, 1994, Session #3, Utterance #9] Mrs. Geller: Oh, she just graduated, and she wants to be something in cooking, or food, or.... I don't know. Anyway, I told her you had a restaurant-\n[Date: September 30, 1994, Session #3, Utterance #11] Mrs. Geller: Well, they don't have to know that...\n[Date: September 22, 1994, Session #1, Utterance #50] Rachel: Oh God... well, it started about a half hour before the wedding. I was in the room where we were keeping all the presents, and I was looking at this gravy boat. This really gorgeous Lamauge gravy boat. When all of a sudden- Sweet 'n' Lo?- I realized that I was more turned on by this gravy boat than by Barry! And then I got really freaked out, and that's when it hit me: how much Barry looks like Mr. Potato Head. Y'know, I mean, I always knew looked familiar, but... Anyway, I just had to get out of there, and I started wondering 'Why am I doing this, and who am I doing this for?'.  So anyway I just didn't know where to go, and I know that you and I have kinda drifted apart, but you're the only person I knew who lived here in the city.\n[Date: September 22, 1994, Session #1, Utterance #23] Monica:  Carol moved her stuff out today.\n[Date: September 30, 1994, Session #1, Utterance #17] Carol: Marty's still totally paranoid. Oh, and, uh-\n[Date: September 30, 1994, Session #2, Utterance #39] Ross: Carol's pregnant.\n[Date: September 30, 1994, Session #3, Utterance #3] Mrs. Geller: Mmmm!\n[Date: September 30, 1994, Session #1, Utterance #8] Marsha: Yes, it is. Carol! Hi!\n[Date: September 30, 1994, Session #3, Utterance #18] Mrs. Geller: Well, at least she had the chance to leave a man at the altar...\n[Date: October 1, 1994, Session #1, Utterance #3] Carol: Ross, you remember Susan.\n",
+      "Carol: Hey, just curious, do you know who Mr. geller's daughter was sharing her apartment with back in September 1994?",
+      "Rachel",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 30, 1994, Session #2, Utterance #21] Rachel: Oh, like I wasn't dreading tomorrow enough, having to give it back to him... 'Hi Barry! Remember me? I'm the girl in the veil who stomped on your heart in front of your entire family!' Oh God and now I'm gonna have to return the ring, without the ring, which makes it so much harder...\n[Date: September 30, 1994, Session #4, Utterance #25] Rachel: Oh, you've got Carol tomorrow.. When did it get so complicated?\n[Date: September 22, 1994, Session #1, Utterance #50] Rachel: Oh God... well, it started about a half hour before the wedding. I was in the room where we were keeping all the presents, and I was looking at this gravy boat. This really gorgeous Lamauge gravy boat. When all of a sudden- Sweet 'n' Lo?- I realized that I was more turned on by this gravy boat than by Barry! And then I got really freaked out, and that's when it hit me: how much Barry looks like Mr. Potato Head. Y'know, I mean, I always knew looked familiar, but... Anyway, I just had to get out of there, and I started wondering 'Why am I doing this, and who am I doing this for?'.  So anyway I just didn't know where to go, and I know that you and I have kinda drifted apart, but you're the only person I knew who lived here in the city.\n[Date: September 30, 1994, Session #3, Utterance #16] Mrs. Geller: What that Rachel did to her life.... We ran into her parents at the club, they were not playing very well.\n[Date: September 30, 1994, Session #4, Utterance #29] Rachel: I mean, didn't you think you were just gonna meet somone, fall in love- and that'd be it?  ..Ross?\n[Date: September 30, 1994, Session #4, Utterance #27] Rachel: Remember when we were in high school together?\n[Date: September 23, 1994, Session #2, Utterance #24] Rachel: Hey Mon, look what I just found on the floor.  What?\n[Date: September 30, 1994, Session #3, Utterance #26] Ross:  Okay! Okay.  Look, I, uh- I realise you guys have been wondering what exactly happened between Carol and me, and, so, well, here's the deal. Carol's a lesbian. She's living with a woman named Susan. She's pregnant with my child, and she and Susan are going to raise the baby.\n[Date: September 30, 1994, Session #2, Utterance #17] Rachel: Has anybody seen my engagement ring?\n[Date: September 23, 1994, Session #2, Utterance #34] Rachel: I knew.\n[Date: September 22, 1994, Session #1, Utterance #43] Monica: Rachel?!\n[Date: September 22, 1994, Session #1, Utterance #44] Rachel: Oh God Monica hi! Thank God! I just went to your building and you weren't there and then this guy with a big hammer said you might be here and you are, you are!\n[Date: September 30, 1994, Session #2, Utterance #39] Ross: Carol's pregnant.\n[Date: September 30, 1994, Session #4, Utterance #23] Rachel: So, got any advice? Y'know, as someone who's recently been- dumped?\n[Date: September 23, 1994, Session #2, Utterance #16] Monica:  Rachel!  That was a library card!\n[Date: September 30, 1994, Session #2, Utterance #25] Phoebe: Doy! Probably right before she lost it!\n[Date: September 23, 1994, Session #1, Utterance #10] Rachel: Guess what?\n[Date: September 30, 1994, Session #4, Utterance #31] Rachel: Oh! Man, I never thought I'd be here..\n[Date: September 22, 1994, Session #3, Utterance #10] Ross:  This was Carol's favorite beer. She always drank it out of the can, I should have known.\n[Date: September 30, 1994, Session #2, Utterance #19] Rachel: Oh God, oh God, oh God oh God oh God oh God....\n",
+      "Carol: Oh my God, can you remember what Rachel was freaking out about losing but then finally found?",
+      "An engagement ring",
+      "([N/A])"
+    ],
+    [
+      "[Date: September 22, 1994, Session #2, Utterance #25] Joey: Who's Paul?\n[Date: September 22, 1994, Session #2, Utterance #20] Monica: Joey, stop hitting on her! It's her wedding day!\n[Date: September 22, 1994, Session #3, Utterance #13] Joey: Ross, let me ask you a question. She got the furniture, the stereo, the good TV- what did you get?\n[Date: September 22, 1994, Session #4, Utterance #7] Joey: What are you talking about? 'One woman'? That's like saying there's only one flavor of ice cream for you. Lemme tell you something, Ross. There's lots of flavors out there. There's Rocky Road, and Cookie Dough, and Bing! Cherry Vanilla. You could get 'em with Jimmies, or nuts, or whipped cream! This is the best thing that ever happened to you! You got married, you were, like, what, eight? Welcome back to the world! Grab a spoon!\n[Date: September 22, 1994, Session #1, Utterance #3] Chandler: All right Joey, be nice.  So does he have a hump? A hump and a hairpiece?\n[Date: September 22, 1994, Session #1, Utterance #2] Joey: C'mon, you're going out with the guy! There's gotta be something wrong with him!\n[Date: September 22, 1994, Session #2, Utterance #27] Monica: Maybe. Joey: Wait. Your 'not a real date' tonight is with Paul the Wine Guy?\n[Date: September 22, 1994, Session #2, Utterance #19] Joey:  And hey, you need anything, you can always come to Joey. Me and Chandler live across the hall. And he's away a lot.\n[Date: September 22, 1994, Session #1, Utterance #33] Joey: And you never knew she was a lesbian...\n[Date: September 30, 1994, Session #4, Utterance #8] Chandler: What does she do?\n[Date: September 22, 1994, Session #1, Utterance #46] Monica:  De-caff.  Okay, everybody, this is Rachel, another Lincoln High survivor.  This is everybody, this is Chandler, and Phoebe, and Joey, and- you remember my brother Ross?\n[Date: September 30, 1994, Session #4, Utterance #9] Phoebe: She's a waitress.\n[Date: September 30, 1994, Session #3, Utterance #1] Mrs. Geller: Oh, Martha Ludwin's daughter is gonna call you.  Mmm! What's that curry taste?\n[Date: September 22, 1994, Session #2, Utterance #55] Joey: Hey Pheebs, you wanna help?\n[Date: September 22, 1994, Session #2, Utterance #48] Monica:  Shut up, Joey!\n[Date: September 22, 1994, Session #1, Utterance #24] Joey: Ohh.\n[Date: September 22, 1994, Session #5, Utterance #2] Joey: Great story!  But, I uh, I gotta go, I got a date with Andrea--Angela--Andrea...  Oh man,\n[Date: September 30, 1994, Session #1, Utterance #6] Marsha: Speaking of issues, isn't that your ex-wife?\n[Date: September 22, 1994, Session #3, Utterance #4] Joey:  What's this?\n[Date: September 30, 1994, Session #3, Utterance #11] Mrs. Geller: Well, they don't have to know that...\n",
+      "Joey: Hey, just outta curiosity, who's Mrs. waltham's hubby?",
+      "I don't know.",
+      "([N/A])"
+    ]
+  ],
+  "save_time_list": [
+    0.3327913284301758,
+    0.3942553997039795,
+    0.31287312507629395,
+    0.34005165100097656,
+    0.29903578758239746,
+    0.2886030673980713,
+    0.30900025367736816,
+    0.3351249694824219,
+    0.32923197746276855,
+    0.4834303855895996,
+    0.329481840133667,
+    0.3038666248321533,
+    0.284437894821167,
+    0.5323793888092041,
+    0.2826194763183594,
+    0.7156615257263184,
+    0.3103823661804199
+  ],
+  "retrieve_search_time_list": [
+    0.32669925689697266,
+    0.3535313606262207,
+    0.3175649642944336,
+    0.3314173221588135,
+    0.29174089431762695,
+    0.32009029388427734,
+    0.321483850479126,
+    0.28399038314819336,
+    0.544675350189209,
+    0.8056018352508545,
+    0.3517446517944336,
+    0.3448023796081543,
+    0.3273906707763672,
+    0.34744691848754883,
+    0.48077964782714844,
+    0.5534074306488037,
+    0.28615593910217285
+  ],
+  "ans_time_list": [
+    0.6777677536010742,
+    0.6197292804718018,
+    0.6257314682006836,
+    0.8246088027954102,
+    1.136108160018921,
+    0.904289722442627,
+    0.5269069671630859,
+    1.4355406761169434,
+    0.6494314670562744,
+    1.1438720226287842,
+    0.6256275177001953,
+    0.6279885768890381,
+    1.0527541637420654,
+    0.9095523357391357,
+    0.6113986968994141,
+    0.8785920143127441,
+    0.7710082530975342
+  ],
+  "calibrated_result_list": [
+    "Correct",
+    "Correct",
+    "Correct",
+    "Correct",
+    "Wrong",
+    "Correct",
+    "Wrong",
+    "Wrong",
+    "Correct",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Wrong",
+    "Correct",
+    "Correct"
+  ],
+  "calibrated_distilled_answer_list": [
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])",
+    "([N/A])"
+  ],
+  "target_level_list": [
+    {
+      "current_type": "before_event_unans"
+    },
+    {
+      "current_type": "fu"
+    },
+    {
+      "current_type": "before_event_unans"
+    },
+    {
+      "current_type": "past"
+    },
+    {
+      "current_type": "cur"
+    },
+    {
+      "current_type": "dont_know_unans_time"
+    },
+    {
+      "current_type": "past"
+    },
+    {
+      "current_type": "past"
+    },
+    {
+      "current_type": "fu"
+    },
+    {
+      "current_type": "past"
+    },
+    {
+      "current_type": "cur"
+    },
+    {
+      "current_type": "cur"
+    },
+    {
+      "current_type": "past_cur"
+    },
+    {
+      "current_type": "past_past"
+    },
+    {
+      "current_type": "past_past"
+    },
+    {
+      "current_type": "ans_wo_time"
+    },
+    {
+      "current_type": "fu"
+    }
+  ]
+}

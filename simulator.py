@@ -44,7 +44,7 @@ def parse_args():
     parser.add_argument('--gemini_api_key', type=str, default="", help="Gemini API key")
     parser.add_argument('--antrhopic_api_key', type=str, default="", help="Anthropic API key")
     parser.add_argument('--fast_eval', type=str, default="yes", help="When set to 'yes', the simulator proceeds to the next utterance without waiting for the time interval if the history has already been updated. Should be one of ('yes', 'no')")
-    parser.add_argument('--answer_format', type=str, default='multiple_choice', help="the format of the answer of the agent.")
+    parser.add_argument('--answer_format', type=str, default='multi_choice_structured', help="the format of the answer of the agent.")
     return parser.parse_args()
 
 def answer_question(model_name, client, model, tokenizer, config, prompt):
@@ -160,7 +160,7 @@ def simulator(
         gemini_api_key:str="",
         antrhopic_api_key:str="",
         fast_eval:str="yes",
-        answer_format:str="multiple_choice"
+        answer_format:str="multi_choice_structured"
         ):
     """
     script_name: script name ('friends', 'bigbang', 'theoffice')
@@ -238,7 +238,7 @@ def simulator(
     openai_client = None
     if 'gpt' in model_name.lower() or 'openai' in ret_method:
         openai_client = OpenAI(api_key=openai_api_key) 
-    if answer_format in ['structured', 'unstructured']:
+    if answer_format in ['multi_choice_unstructured', 'open_ended']:
         openai_client = OpenAI(api_key=openai_api_key)
     anthropic_client = None
     if "claude" in model_name.lower(): 
@@ -246,7 +246,7 @@ def simulator(
     
     if "gpt" in model_name.lower():
         client = openai_client
-        if answer_format in ['structured', 'unstructured']:
+        if answer_format in ['multi_choice_unstructured', 'open_ended']:
             client = OpenAI(api_key=openai_api_key)
     elif "claude" in model_name.lower():
         client = anthropic_client
@@ -617,7 +617,7 @@ def simulator(
                     if true_answer_op == '':
                         continue
                     
-                    if answer_format in ['structured', 'unstructured']:
+                    if answer_format in ['multi_choice_unstructured', 'open_ended']:
                         if true_answer_op == "(E)":
                             true_answer_op = "I don't know."
                         else:
@@ -628,16 +628,16 @@ def simulator(
 
                     question_part_prompt += f'{char_ask}: {real_question}'
                     options = target_question_list[real_tar_id]['options']
-                    if answer_format == 'multiple_choice':
+                    if answer_format == 'multi_choice_structured':
                         question_part_prompt += '\n'
                         question_part_prompt += f'\t(A) {options[0]}\n'
                         question_part_prompt += f'\t(B) {options[1]}\n'
                         question_part_prompt += f'\t(C) {options[2]}\n'
                         question_part_prompt += f'\t(D) {options[3]}\n'
                         question_part_prompt += f'\t(E) {options[4]}'
-                    elif answer_format == 'unstructured':
+                    elif answer_format == 'open_ended':
                         pass
-                    elif answer_format == 'structured':
+                    elif answer_format == 'multi_choice_unstructured':
                         question_part_prompt += ' '
                         question_part_prompt += f'{options[0]}? or '
                         question_part_prompt += f'{options[1]}? or '
@@ -645,7 +645,7 @@ def simulator(
                         question_part_prompt += f'{options[3]}? or '
                         question_part_prompt += f"you don't know?"
                     else:
-                        raise ValueError("Invalid answer format. Should be one of ('multiple_choice', 'structured', 'unstructured')")
+                        raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
                     """Start of Answering. Time measure starts HERE"""
                     # time measure START
                     ans_timeout_flag = False
@@ -674,8 +674,8 @@ def simulator(
                         # Model inference
                             question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                             chatbot_sh = name_change(script_name, chatbot, name_shuffle)
-                            if answer_format not in ['multiple_choice', 'structured', 'unstructured']:
-                                raise ValueError("Invalid answer format. Should be one of ('multiple_choice', 'structured', 'unstructured')")
+                            if answer_format not in ['multi_choice_structured', 'multi_choice_unstructured', 'open_ended']:
+                                raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
                             if ret_method == 'no_ret':
                                 prompt = open_file(f'./prompt/naive_llm_inference_{answer_format}.txt').replace('<<<Date>>>', date).replace('<<<Dialog_History>>>', ret_histories).replace('<<<Question>>>', question_part_prompt_sh).replace('<<<Chatbot>>>', chatbot_sh)
                             else:

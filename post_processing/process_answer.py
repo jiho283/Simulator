@@ -34,7 +34,7 @@ def gpt_judge(question, true_answer, answer, client, temperature=0.2, top_p=0.1,
     
     return result
 
-def judge_eq(true_answer_op, answer, question, client=None, answer_format="multiple_choice"):
+def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi_choice_structured"):
     """
     A function that judges whether the model's output is correct or not.
     Handles ambiguous cases. If ambiguous, we return the flag of ambiguity with `True`.
@@ -47,8 +47,8 @@ def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi
         result (str): 'Correct' or 'Wrong'
         is_ambiguous (bool): flag of cases whether the model is outputting ambiguous answer.
     """    
-    if answer_format not in ["multiple_choice", "structured", "unstructured"]:
-        raise ValueError("answer_format should be one of ['multiple_choice', 'structured', 'unstructured']")
+    if answer_format not in ["multi_choice_structured", "multi_choice_unstructured", "open_ended"]:
+        raise ValueError("answer_format should be one of ['multi_choice_structured', 'multi_choice_unstructured', 'open_ended']")
     is_ambiguous = False
     # is_ambiguous: count of cases when the model is outputting multiple options
     ## this is ambiguous because:
@@ -56,7 +56,7 @@ def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi
     ### (2) the model is reasoning with explicitly mentioning other options and gives the correct answer
     ### (3) the model is reasoning with explicitly mentioning other options and gives the wrong answer
     result = 'Wrong'
-    if answer_format == "multiple_choice":
+    if answer_format == "multi_choice_structured":
         if answer == "":
             is_ambiguous = False
             result = 'Wrong'
@@ -75,22 +75,7 @@ def judge_eq(true_answer_op, answer, question, client=None, answer_format="multi
                     return result, is_ambiguous
             result = 'Correct'
         return result, is_ambiguous
-    elif answer_format == "structured":
-        if answer == true_answer_op:
-            result = "Correct"
-            is_ambiguous = False
-            return result, is_ambiguous
-        elif answer == f"{true_answer_op}.":
-            result = "Correct"
-            is_ambiguous = False
-            return result, is_ambiguous
-        else:
-            result = gpt_judge(question, true_answer_op, answer, client)
-
-            if result == "Ambiguous":
-                is_ambiguous = True
-            return result, is_ambiguous
-    else:
+    elif answer_format in ["multi_choice_unstructured", "open_ended"]:
         result = gpt_judge(question, true_answer_op, answer, client)
 
         if result == "Ambiguous":
@@ -113,7 +98,7 @@ def distill_answer(answer):
             return candidate
     return "([N/A])"
 
-def calibrate(original_result, is_ambiguous, true_answer_op, answer, question, distilled_answer, answer_format="multiple_choice", client=None, lenient=True):
+def calibrate(original_result, is_ambiguous, true_answer_op, answer, question, distilled_answer, answer_format="multi_choice_structured", client=None, lenient=True):
     """Disambiguates ambiguous answers and evaluate model's answsers with a more lenient criteria.
     By using this function, you consider the followings to also be a correct answer from a model.
     - (lenient) When the model outputs only the description of the option. e.g. "Chandler" instead of "(C) Chandler"
@@ -133,25 +118,12 @@ def calibrate(original_result, is_ambiguous, true_answer_op, answer, question, d
     """
     if not is_ambiguous:
         return original_result, is_ambiguous, distilled_answer
-    if answer_format not in ["multiple_choice", "structured", "unstructured"]:
-        raise ValueError("answer_format should be one of ['multiple_choice', 'structured', 'unstructured']")
+    if answer_format not in ["multi_choice_structured", "multi_choice_unstructured", "open_ended"]:
+        raise ValueError("answer_format should be one of ['multi_choice_structured', 'multi_choice_unstructured', 'open_ended']")
     
-    
-    if answer_format == "structured":
-        if answer == true_answer_op:
-            result = "Correct"
-            is_ambiguous = False
-            return result, is_ambiguous, distilled_answer
-        else:
-            # use gpt-4o-mini to judge the answer
-            result = gpt_judge(question, true_answer_op, answer, client)
-            is_ambiguous = True if result=="Ambiguous" else False
-            return result, is_ambiguous, distilled_answer
-    elif answer_format == "unstructured":
-        # use gpt-4o-mini to judge the answer
-        result = gpt_judge(question, true_answer_op, answer, client)
-        is_ambiguous = True if result=="Ambiguous" else False
-        return result, is_ambiguous, distilled_answer
+    if answer_format in ["multi_choice_unstructured", "open_ended"]:
+        return original_result, is_ambiguous, distilled_answer
+   
     else:
         op2idx = {
             "(A)" : 1,
