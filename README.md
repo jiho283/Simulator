@@ -55,5 +55,148 @@ Command Example:
 
 
 ## Python Package
-We plan to make this simulator into a Python package (`pip install dialsim`).
-This currently (Aug 12, 2024) supports `"multi_choice_structured"` format for agent's answer, but will support `"multi_choice_unstructured"` and `"open_ended"` formatted answer soon (before Sep 1, 2024).  
+You can also install the package with
+```pip install dialsim```
+
+### How to Use
+```
+# import necessary modules
+from dialsim.models.load_model import load_model
+from dialsim.agent import DialSim
+from dialsim.agent import Agent
+
+# specify the name of the script ("friends", "theoffice", "bigbang")
+script_name = "friends"
+# specify model name
+model_name = "gpt-4o-mini"
+client = OpenAI(api_key="<<Your OpenAI API KEY>>")
+
+model, tokenizer, config = load_model(model_name, "4bit")
+
+
+# create agent
+agent = Agent(
+    history_type="session-entire",
+    ret_method="bm25",
+    num_ret_history=20,
+    model_name=model_name, 
+    model=model,
+    tokenizer=tokenizer, # None if using API based models
+    config=config, # None if using API based models
+    client=client,
+    openai_client=client,
+    answer_format="multi_choice_structured" # "multi_choice_structured", "multi_choice_unstructured", "open_ended"
+)
+
+# create simulator
+simulator = DialSim(
+    sleep_time=50,
+    script_name=script_name,
+    agent=agent,
+    name_shuffle="original", # "original", "new_name", "shuffle"
+    tkg_ratio=0.7,
+    debug=True, # debug mode: you can limit the number of episodes
+    debug_n_episodes=2,
+    fast_eval=True # if you don't want to wait for sleep_time seconds for each utterance of the speakers
+)
+
+# run simulation
+simulator.simulate()
+# get log
+log_info = simulator.log_results()
+# save log. Default path is "./results/log.json"
+simulator.save_log(log_info)
+```
+
+### Customized Agents
+You can also use your own customized agents by overriding the methods in `Agent` and `Dialsim`:
+```
+# example: customized way of saving history. Rest is the same as the baselines in the paper.
+class CustomAgent(Agent):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    
+    # overrides `save_history`
+    def save_history(self, generator_instance) -> tuple:
+        #return super().save_history(history, date, cur_conv_num, un, post_utterances)
+        un = generator_instance["un"]
+        post_utterances = generator_instance["post_utterances"]
+        prev_cnt = min(un, 3)
+        prev_utts = post_utterances[un-prev_cnt : un]
+        history = '\n'.join(prev_utts)
+        generator_instance["history"] = history
+        openie_prompt = open_file('./my_prompt_root_path/prompt/openie_utt_prompt.txt').replace('<<<PREV_UTTS>>>', generator_instance["history"]).replace('<<<LAST_UTT>>>', generator_instance["utter_post_sh"])
+        cur_triples = gpt35_inference(openie_prompt, self.openai_client).replace(";","")
+        processed_history = f'[Date: {generator_instance["date"]}, Session #{generator_instance["cur_conv_num"]}, History #{generator_instance["history_num"]+1}]\n{cur_triples}'
+        generator_instance["history"] = processed_history
+        
+        self.data_dict['history'].append(processed_history)
+        self.is_data_dict_history_updated = True
+        if self.ret_method == 'openai-emb':
+            embedding_vec = get_embedding(processed_history, client=self.client, model="text-embedding-3-small")
+            self.data_dict['ada_embedding'].append(embedding_vec)
+            self.is_data_dict_embedding_updated = True
+            data_df = pd.DataFrame(self.data_dict)
+            return data_df
+        elif self.ret_method == 'bm25':
+            tokenized_docs = [word_tokenize(doc.lower()) for doc in self.data_dict['history']]
+            bm25 = BM25Okapi(tokenized_docs)
+            return bm25
+        elif self.ret_method == 'no_ret':
+            token_len = self.llama_tokenizer(processed_history, return_tensors="pt", truncation=True).input_ids.shape[1]
+            self.data_dict['ada_embedding'].append(token_len)
+            self.is_data_dict_embedding_updated = True
+            return None
+        elif self.ret_method == "oracle":
+            return None
+        else:
+            raise ValueError("Incorrect `ret_method`.")
+
+# customized simulator that processes each instance of the simulation.
+class CustomSimulator(DialSim):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    
+    def process_walk(self):
+        un = self.generator_instance["un"]
+        post_utterances = self.generator_instance["post_utterances"]
+        prev_cnt = min(un, 3)
+        prev_utts = post_utterances[un-prev_cnt : un]
+        history_before = '\n'.join(prev_utts)
+        history = name_change(self.script_name, history_before, self.name_shuffle)
+        self.generator_instance["history"] = history
+        return self.generator_instance
+
+# the rest is the same
+custom_agent = CustomAgent(
+    history_type="openie",
+    ret_method="openai-emb",
+    num_ret_history=20,
+    model_name=model_name, 
+    model=model,
+    tokenizer=tokenizer,
+    config=config,
+    client=client,
+    openai_client=client,
+    adjust_num_ret_history_=False,
+    answer_format="multi_choice_structured"
+)
+
+custom_simulator = CustomSimulator(
+    sleep_time=5,
+    data=data,
+    oracle_tkg=oracle_tkg,
+    oracle_fan=oracle_fan,
+    script_name=script_name,
+    agent=custom_agent,
+    name_shuffle="original",
+    tkg_ratio=0.7,
+    debug=True,
+    debug_n_episodes=2,
+    fast_eval=True
+)
+
+custom_simulator.simulate()
+log_info = custom_simulator.log_results()
+custom_simulator.save_log(log_info)
+```
