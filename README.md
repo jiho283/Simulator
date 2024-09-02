@@ -112,45 +112,52 @@ simulator.save_log(log_info)
 You can also use your own customized agents by overriding the methods in `Agent` and `Dialsim`:
 ```
 # example: customized way of saving history. Rest is the same as the baselines in the paper.
+from dialsim.models.api_based_inference import gpt_inference
+import pandas as pd
+from rank_bm25 import BM25Okapi
+from nltk.tokenize import word_tokenize
+from dialsim.utils import get_embedding, search_history, open_file, name_change
 class CustomAgent(Agent):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
-    # overrides `save_history`
     def save_history(self, generator_instance) -> tuple:
         #return super().save_history(history, date, cur_conv_num, un, post_utterances)
-        un = generator_instance["un"]
-        post_utterances = generator_instance["post_utterances"]
-        prev_cnt = min(un, 3)
-        prev_utts = post_utterances[un-prev_cnt : un]
-        history = '\n'.join(prev_utts)
-        generator_instance["history"] = history
-        openie_prompt = open_file('./my_prompt_root_path/prompt/openie_utt_prompt.txt').replace('<<<PREV_UTTS>>>', generator_instance["history"]).replace('<<<LAST_UTT>>>', generator_instance["utter_post_sh"])
-        cur_triples = gpt35_inference(openie_prompt, self.openai_client).replace(";","")
-        processed_history = f'[Date: {generator_instance["date"]}, Session #{generator_instance["cur_conv_num"]}, History #{generator_instance["history_num"]+1}]\n{cur_triples}'
-        generator_instance["history"] = processed_history
-        
-        self.data_dict['history'].append(processed_history)
-        self.is_data_dict_history_updated = True
-        if self.ret_method == 'openai-emb':
-            embedding_vec = get_embedding(processed_history, client=self.client, model="text-embedding-3-small")
-            self.data_dict['ada_embedding'].append(embedding_vec)
-            self.is_data_dict_embedding_updated = True
-            data_df = pd.DataFrame(self.data_dict)
-            return data_df
-        elif self.ret_method == 'bm25':
-            tokenized_docs = [word_tokenize(doc.lower()) for doc in self.data_dict['history']]
-            bm25 = BM25Okapi(tokenized_docs)
-            return bm25
-        elif self.ret_method == 'no_ret':
-            token_len = self.llama_tokenizer(processed_history, return_tensors="pt", truncation=True).input_ids.shape[1]
-            self.data_dict['ada_embedding'].append(token_len)
-            self.is_data_dict_embedding_updated = True
-            return None
-        elif self.ret_method == "oracle":
-            return None
+        if self.history_type == "openie":
+            un = generator_instance["un"]
+            post_utterances = generator_instance["post_utterances"]
+            prev_cnt = min(un, 3)
+            prev_utts = post_utterances[un-prev_cnt : un]
+            history = '\n'.join(prev_utts)
+            generator_instance["history"] = history
+            openie_prompt = open_file('./data/openie_utt_prompt.txt').replace('<<<PREV_UTTS>>>', generator_instance["history"]).replace('<<<LAST_UTT>>>', generator_instance["utter_post_sh"])
+            cur_triples = gpt_inference(message=openie_prompt, model_name=self.model_name, client=self.openai_client).replace(";","")
+            processed_history = f'[Date: {generator_instance["date"]}, Session #{generator_instance["cur_conv_num"]}, History #{generator_instance["history_num"]+1}]\n{cur_triples}'
+            generator_instance["history"] = processed_history
+            
+            self.data_dict['history'].append(processed_history)
+            self.is_data_dict_history_updated = True
+            if self.ret_method == 'openai-emb':
+                embedding_vec = get_embedding(processed_history, client=self.client, model="text-embedding-3-small")
+                self.data_dict['ada_embedding'].append(embedding_vec)
+                self.is_data_dict_embedding_updated = True
+                data_df = pd.DataFrame(self.data_dict)
+                return data_df
+            elif self.ret_method == 'bm25':
+                tokenized_docs = [word_tokenize(doc.lower()) for doc in self.data_dict['history']]
+                bm25 = BM25Okapi(tokenized_docs)
+                return bm25
+            elif self.ret_method == 'no_ret':
+                token_len = self.llama_tokenizer(processed_history, return_tensors="pt", truncation=True).input_ids.shape[1]
+                self.data_dict['ada_embedding'].append(token_len)
+                self.is_data_dict_embedding_updated = True
+                return None
+            elif self.ret_method == "oracle":
+                return None
+            else:
+                raise ValueError("Incorrect `ret_method`.")
         else:
-            raise ValueError("Incorrect `ret_method`.")
+            raise NotImplementedError("Only `openie` history type is supported.")
 
 # customized simulator that processes each instance of the simulation.
 class CustomSimulator(DialSim):
@@ -184,9 +191,6 @@ custom_agent = CustomAgent(
 
 custom_simulator = CustomSimulator(
     sleep_time=5,
-    data=data,
-    oracle_tkg=oracle_tkg,
-    oracle_fan=oracle_fan,
     script_name=script_name,
     agent=custom_agent,
     name_shuffle="original",
