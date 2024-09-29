@@ -5,7 +5,7 @@ We introduce DialSim, a real-time dialogue simulator. In this simulator, an agen
 The dataset is released along with our [paper](https://arxiv.org/abs/2406.13144). For further details, please refer to our paper.
 
 ## Dataset
-You can download the dataset [here](https://www.dropbox.com/scl/fi/904m17bici3s0sxga4oiv/dialsim_v1.1.zip?rlkey=u5lll9aq76sr9258z6xgtjbc6&st=5wtw4e89&dl=0).
+You can download the dataset [here](https://drive.google.com/drive/folders/1MhPlUFWuchVZ5E1NQDWfbT7_RW7ozbuk?usp=drive_link).
 
 v1.0 (April 2024): This version includes the dataset as described in the paper.
 
