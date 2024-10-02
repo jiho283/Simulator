@@ -5,9 +5,9 @@ We introduce DialSim, a real-time dialogue simulator. In this simulator, an agen
 ## Dataset
 You can download the dataset [here](https://drive.google.com/drive/folders/1MhPlUFWuchVZ5E1NQDWfbT7_RW7ozbuk?usp=drive_link).
 
-v1.0 (April 2024): This version includes the dataset as described in the paper.
+v1.0: This version includes the dataset as described in the paper.
 
-v1.1 (June 2024): To incorporate more diverse and challenging data, this version has been updated to include unanswerable multi-hop questions.
+v1.1: To incorporate more diverse and challenging data, this version has been updated to include unanswerable multi-hop questions.
 
 ## Experimental Setup
 
