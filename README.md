@@ -58,4 +58,3 @@ Command Example:
 custom_simulator.simulate()
 log_info = custom_simulator.log_results()
 custom_simulator.save_log(log_info)
-```
