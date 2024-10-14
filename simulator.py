@@ -546,16 +546,13 @@ def simulator(
                 answer = ""
                 
                 already_pop = False
-                history_before_save_len = None
-                embedding_before_save_len = None
-                history_after_save_len = None
-                embedding_after_save_len = None
+                history_before_save_len = len(data_dict['history'])
+                embedding_before_save_len = len(data_dict['ada_embedding'])
                 save_start_time = time.time()
                 save_result = None
                 
                 try:
-                    history_before_save_len = len(data_dict['history'])
-                    embedding_before_save_len = len(data_dict['ada_embedding'])
+                    
                     save_result, history_num = func_timeout(sleep_time, save_history, args=(history_num, history, history_type, date, cur_conv_num, un, post_utterances, utter_post, model_name, openai_client, model, tokenizer, config, data_dict, ret_method, llama_tokenizer)) 
                     save_end_time = time.time()
                     save_time = save_end_time - save_start_time  

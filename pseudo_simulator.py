@@ -557,8 +557,8 @@ def simulator(
                 answer = ""
                 
                 already_pop = False
-                history_before_save_len = None
-                embedding_before_save_len = None
+                history_before_save_len = len(data_dict['history'])
+                embedding_before_save_len = len(data_dict['ada_embedding'])
                 save_start_time = time.time()
                 save_result = None
                 
@@ -660,6 +660,7 @@ def simulator(
                         question_part_prompt += f"you don't know?"
                     else:
                         raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
+                    question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                     """Start of Answering. Time measure starts HERE"""
                     # time measure START
                     ans_timeout_flag = False
@@ -686,7 +687,6 @@ def simulator(
                             result_time = "<<<Timeout in searching history>>>"
                         if not search_timeout_flag:
                         # Model inference
-                            question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                             chatbot_sh = name_change(script_name, chatbot, name_shuffle)
                             if answer_format not in ['multi_choice_structured', 'multi_choice_unstructured', 'open_ended']:
                                 raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
