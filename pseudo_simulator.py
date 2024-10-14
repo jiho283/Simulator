@@ -569,19 +569,18 @@ def simulator(
                 save_time = save_end_time - save_start_time  
                 
                 if save_time > sleep_time:
+                    history_after_save_len = len(data_dict['history'])
+                    embedding_after_save_len = len(data_dict['ada_embedding'])
                     save_timeout_flag = True
                     print("\nTimeout (saving history)!!!\n")
                     print("Corresponding history couldn't be saved.\n")
-                    if len(data_dict['history']) > 0:
+                    if len(data_dict['history']) > 0 and history_after_save_len > history_before_save_len:
                         data_dict['history'].pop()
                     if ret_method in ["openai-emb", "no_ret"]:
-                        if len(data_dict['ada_embedding']) > 0:
+                        if len(data_dict['ada_embedding']) > 0 and embedding_after_save_len > embedding_before_save_len:
                             data_dict['ada_embedding'].pop()
                         if ret_method == "openai-emb":
-                            try:
-                                save_result = pd.DataFrame(data_dict)
-                            except:
-                                import pdb; pdb.set_trace()
+                            save_result = pd.DataFrame(data_dict)
                     if ret_method == "bm25":
                         if len(data_dict['history']) > 0:
                             tokenized_docs = [word_tokenize(doc.lower()) for doc in data_dict['history']]
