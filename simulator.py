@@ -123,7 +123,6 @@ def save_history(history_num, history, history_type, date, cur_conv_num, un, pos
             history_sum = history
         processed_history = f"[Date: {date}, Session #{cur_conv_num}]\n{history_sum}\n"
 
-    #save_to_data_dict_signal_handler = signal_handler
     data_dict['history'].append(processed_history)
     if ret_method == 'openai-emb':
         embedding_vec = get_embedding(processed_history, client=client, model="text-embedding-3-small")
@@ -234,25 +233,26 @@ def simulator(
             num_ret_history = 10
         else:
             num_ret_history = 20
-    
+    client = None
     openai_client = None
     if 'gpt' in model_name.lower() or 'openai' in ret_method:
         openai_client = OpenAI(api_key=openai_api_key) 
-    if answer_format in ['multi_choice_unstructured', 'open_ended']:
+        
+    elif answer_format in ['multi_choice_unstructured', 'open_ended']:
         openai_client = OpenAI(api_key=openai_api_key)
+        if "claude" not in model_name.lower() or "gemini" not in model_name.lower():
+            client = openai_client
     anthropic_client = None
     if "claude" in model_name.lower(): 
         anthropic_client = Anthropic(api_key=antrhopic_api_key)
     
-    if "gpt" in model_name.lower():
+    elif "gpt" in model_name.lower():
         client = openai_client
         if answer_format in ['multi_choice_unstructured', 'open_ended']:
             client = OpenAI(api_key=openai_api_key)
     elif "claude" in model_name.lower():
         client = anthropic_client
-    else:
-        client = None
-
+    
     with open(f'./data/{script_name}_dialsim.pickle', 'rb') as f:
         data = pickle.load(f)
     with open(f'./data/{script_name}_oracle_tkg.pickle', 'rb') as f_h:
@@ -548,22 +548,30 @@ def simulator(
                 already_pop = False
                 history_before_save_len = None
                 embedding_before_save_len = None
+                history_after_save_len = None
+                embedding_after_save_len = None
                 save_start_time = time.time()
                 save_result = None
                 
                 try:
+                    history_before_save_len = len(data_dict['history'])
+                    embedding_before_save_len = len(data_dict['ada_embedding'])
                     save_result, history_num = func_timeout(sleep_time, save_history, args=(history_num, history, history_type, date, cur_conv_num, un, post_utterances, utter_post, model_name, openai_client, model, tokenizer, config, data_dict, ret_method, llama_tokenizer)) 
                     save_end_time = time.time()
                     save_time = save_end_time - save_start_time  
+                    
+                    
                 
                 except FunctionTimedOut:
+                    history_after_save_len = len(data_dict['history'])
+                    embedding_after_save_len = len(data_dict['ada_embedding'])
                     save_timeout_flag = True
                     print("\nTimeout (saving history)!!!\n")
                     print("Corresponding history couldn't be saved.\n")
-                    if len(data_dict['history']) > 0:
+                    if len(data_dict['history']) > 0 and history_after_save_len > history_before_save_len:
                         data_dict['history'].pop()
                     if ret_method in ["openai-emb", "no_ret"]:
-                        if len(data_dict['ada_embedding']) > 0:
+                        if len(data_dict['ada_embedding']) > 0 and embedding_after_save_len > embedding_before_save_len:
                             data_dict['ada_embedding'].pop()
                         if ret_method == "openai-emb":
                             save_result = pd.DataFrame(data_dict)
