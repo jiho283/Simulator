@@ -585,7 +585,7 @@ def simulator(
                         if len(data_dict['history']) > 0:
                             tokenized_docs = [word_tokenize(doc.lower()) for doc in data_dict['history']]
                             save_result = BM25Okapi(tokenized_docs)
-                    
+                    ret_histories = "No history.\n"
                     already_pop = True
                     result = "Wrong (Timeout in saving history)"
                     is_ambiguous = False

@@ -579,7 +579,7 @@ def simulator(
                         if len(data_dict['history']) > 0:
                             tokenized_docs = [word_tokenize(doc.lower()) for doc in data_dict['history']]
                             save_result = BM25Okapi(tokenized_docs)
-                    
+                    ret_histories = "No history.\n"
                     already_pop = True
                     result = "Wrong (Timeout in saving history)"
                     is_ambiguous = False
@@ -654,6 +654,7 @@ def simulator(
                         question_part_prompt += f"you don't know?"
                     else:
                         raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
+                    question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                     """Start of Answering. Time measure starts HERE"""
                     # time measure START
                     ans_timeout_flag = False
@@ -669,6 +670,7 @@ def simulator(
                             ret_histories = func_timeout(sleep_time-save_time, retrieve_history, args=(ret_method, num_ret_history, openai_client, max_token_len, save_result, char_ask_sh, real_question_sh, data_dict, gt_sessions))
                             retrieve_search_time = time.time()-ret_search_start_time
                         except FunctionTimedOut: # timeout during searching history. Note that saving history was done correctly though.
+                            ret_histories = "No history.\n"
                             print("\nTimeout (searching history)!!!\n")
                             search_timeout_flag = True
                             result = "Wrong (Timeout in searching history)"
@@ -680,7 +682,7 @@ def simulator(
                             result_time = "<<<Timeout in searching history>>>"
                         if not search_timeout_flag:
                         # Model inference
-                            question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
+                            #question_part_prompt_sh = name_change(script_name, question_part_prompt, name_shuffle)
                             chatbot_sh = name_change(script_name, chatbot, name_shuffle)
                             if answer_format not in ['multi_choice_structured', 'multi_choice_unstructured', 'open_ended']:
                                 raise ValueError("Invalid answer format. Should be one of ('multi_choice_structured', 'multi_choice_unstructured', 'open_ended')")
