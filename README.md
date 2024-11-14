@@ -25,16 +25,16 @@ After downloading appropriate version of ```torch```, do:
 
 ## Simulation
 Command Example:
-```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "gpt-3.5-turbo" --quantization "4bit" --script_name "friends" --sleep_time 6 --history_type "session-entire" --ret_method "bm25"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "multi_choice_structured" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(not required in this line)"```
+```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "llama3.1-70b-it" --quantization "4bit" --script_name "friends" --sleep_time 6 --history_type "session-entire" --ret_method "bm25"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "multi_choice_structured" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(not required in this line)"```
 
 ```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "gpt-4o" --quantization "4bit" --script_name "friends" --sleep_time 6 --history_type "session-summary" --ret_method "bm25"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "open_ended" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(required in this line)"```
 
 ```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "gpt-4o-mini" --quantization "4bit" --script_name "friends" --sleep_time 6 --history_type "utts" --ret_method "openai-emb"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "multi_choice_unstructured" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(required in this line)"```
 
-```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "llama2-7b-chat" --quantization "4bit" --script_name "friends" --sleep_time 6 --ret_method "no_ret"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "multi_choice_unstructured" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(required in this line)"```
+```CUDA_VISIBLE_DEVICES=0 python simulator.py --model_name "llama3.1-8b-it" --quantization "4bit" --script_name "friends" --sleep_time 6 --ret_method "no_ret"  --trial_version 0 --sh_number 0 --num_cores 10 --answer_format "multi_choice_unstructured" --openai_api_key  "<<YOUR_OPENAI_API_KEY>>(required in this line)"```
 
 #### Arguments
-- `model_name`: Specifies the model to use, default is "gpt-3.5-turbo". Options include "llama2-7b-chat", "llama2-70b-chat", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "claude-3", "claude-2.1", and model names for openai models and gemini models.
+- `model_name`: Specifies the model to use, default is "gpt-3.5-turbo". Options include "llama3.1-8b-it", "llama3.1-70b-it", "tulu2-7b-dpo", "tulu2-70b-dpo", "gemma-2b-it", "gemma-7b-it", "mistral-7b-it", "mixtral-it", "claude-3", "claude-2.1", and model names for openai models and gemini models.
 - `quantization`: Model quantization level, default is "no". Options include "no", "16bit", "8bit", and "4bit".
 - `script_name`: TV show script for the simulation, default is "friends". Options include "friends", "bigbang", and "theoffice".
 - `sleep_time`: Response time limit, default: 5
